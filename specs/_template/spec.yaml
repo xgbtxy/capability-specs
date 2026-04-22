@@ -1,0 +1,16 @@
+id: example-capability
+name: 示例能力
+purpose: 解决某一类高频问题
+inputs:
+  - name: task
+    type: string
+outputs:
+  - name: result
+    type: string
+tools:
+  - name: tool-a
+  - name: tool-b
+workflow:
+  - step: 分析输入
+  - step: 选择工具
+  - step: 执行并返回结果
