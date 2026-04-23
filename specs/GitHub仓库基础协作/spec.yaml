@@ -1,0 +1,48 @@
+id: github-repo-basic-collaboration
+name: GitHub仓库基础协作
+purpose: 把执行者从认识仓库状态、切换分支、本地增删改查、提交推送、创建 PR、读取反馈到继续修订的协作链路拆成多个可复用小能力。
+inputs:
+  - name: repo_path
+    type: path
+    description: 本地仓库路径
+  - name: repo_identifier
+    type: string
+    description: GitHub 仓库标识，例如 owner/repo
+  - name: target_branch
+    type: string
+    description: 团队指定的工作分支
+  - name: base_branch
+    type: string
+    description: PR 目标合并分支
+outputs:
+  - name: workflow_state
+    type: string
+    description: 当前协作流程执行到的阶段
+  - name: repo_summary
+    type: string
+    description: 当前仓库状态的人类可读摘要
+  - name: pr_url
+    type: string
+    description: 创建或更新后的 PR 地址
+  - name: action_items
+    type: list
+    description: 从 PR 反馈中提炼出的行动项
+tools:
+  - name: git
+  - name: github connector
+  - name: github rest api
+  - name: gh
+  - name: powershell
+workflow:
+  - step: 认识仓库当前状态
+  - step: 接手或切换分支
+  - step: 在本地完成增删改查
+  - step: 提交并推送改动
+  - step: 创建 PR 并说明变更
+  - step: 读取 PR 反馈并提炼行动项
+  - step: 根据反馈修订并更新同一个 PR
+  - step: 确认一次 PR 协作闭环是否完成
+constraints:
+  - 不允许默认把整条流程糊成一个不可拆分的大动作
+  - 不允许假设新手理解高级 Git 概念
+  - 不允许在未解释风险时使用破坏性操作

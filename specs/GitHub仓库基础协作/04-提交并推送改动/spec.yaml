@@ -1,0 +1,36 @@
+id: commit-and-push-local-changes
+name: 提交并推送改动
+purpose: 帮执行者整理本地改动、生成清晰提交信息，并把提交推送到正确的远端分支。
+inputs:
+  - name: repo_path
+    type: path
+    description: 本地仓库路径
+  - name: target_branch
+    type: string
+    description: 需要推送到的远端分支
+  - name: change_summary
+    type: string
+    description: 本次改动的大意
+outputs:
+  - name: changed_files
+    type: list
+    description: 本次提交的文件列表
+  - name: commit_message
+    type: string
+    description: 实际使用的提交信息
+  - name: push_result
+    type: string
+    description: 推送结果说明
+tools:
+  - name: git
+  - name: powershell
+workflow:
+  - step: 检查工作树改动并区分相关与无关文件
+  - step: 生成适合本次改动的提交说明
+  - step: 只暂存本次需要提交的文件
+  - step: 创建提交
+  - step: 推送到目标远端分支
+  - step: 用自然语言确认推送结果
+constraints:
+  - 不允许把明显无关的文件默认一起提交
+  - 不允许在未说明的情况下使用破坏性 Git 操作

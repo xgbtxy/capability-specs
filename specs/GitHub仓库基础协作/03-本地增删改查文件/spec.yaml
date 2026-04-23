@@ -1,0 +1,32 @@
+id: local-file-crud-in-repo
+name: 本地增删改查文件
+purpose: 帮执行者在正确的仓库与分支中安全完成文件查看、新增、修改和删除操作，并明确影响范围。
+inputs:
+  - name: repo_path
+    type: path
+    description: 本地仓库路径
+  - name: task_scope
+    type: string
+    description: 本次要处理的文件或功能范围
+outputs:
+  - name: touched_files
+    type: list
+    description: 本次查看或修改涉及的文件
+  - name: change_summary
+    type: string
+    description: 本地增删改查动作摘要
+  - name: ready_to_commit
+    type: string
+    description: 是否可以进入提交阶段
+tools:
+  - name: powershell
+  - name: git
+workflow:
+  - step: 确认要查看或修改的文件范围
+  - step: 阅读相关文件并理解上下文
+  - step: 执行新增、修改或删除操作
+  - step: 检查变更是否超出当前任务范围
+  - step: 用自然语言总结本地变更
+constraints:
+  - 不允许在没看上下文时盲改关键文件
+  - 不允许未说明风险就删除可能有关联的文件

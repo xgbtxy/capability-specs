@@ -1,0 +1,40 @@
+id: revise-and-update-existing-pr
+name: 根据反馈修订并更新PR
+purpose: 帮执行者在原工作分支上根据 reviewer 反馈完成修订，并把更新同步到同一个 PR。
+inputs:
+  - name: repo_path
+    type: path
+    description: 本地仓库路径
+  - name: repo_identifier
+    type: string
+    description: GitHub 仓库标识，例如 owner/repo
+  - name: pr_number
+    type: integer
+    description: 需要继续更新的 PR 编号
+  - name: action_items
+    type: list
+    description: 已整理出的修改项
+outputs:
+  - name: resolved_items
+    type: list
+    description: 已完成的修订项
+  - name: update_commit
+    type: string
+    description: 修订提交哈希或说明
+  - name: reviewer_reply_summary
+    type: string
+    description: 给 reviewer 的更新说明摘要
+tools:
+  - name: git
+  - name: github connector
+  - name: github rest api
+  - name: gh
+workflow:
+  - step: 回到原工作分支并核对待处理反馈
+  - step: 完成代码或文档修订
+  - step: 生成新的提交并推送到原分支
+  - step: 必要时回复 reviewer，说明已处理项和未处理原因
+  - step: 确认同一个 PR 已自动更新
+constraints:
+  - 不允许默认新建第二个重复 PR
+  - 不允许只回复“已修改”却不说明处理范围

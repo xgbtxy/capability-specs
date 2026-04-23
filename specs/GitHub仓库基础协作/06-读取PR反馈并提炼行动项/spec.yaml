@@ -1,0 +1,32 @@
+id: read-pr-feedback-and-extract-actions
+name: 读取PR反馈并提炼行动项
+purpose: 把 PR 中的 review 评论、打回原因和讨论内容整理成新手可执行的动作列表。
+inputs:
+  - name: repo_identifier
+    type: string
+    description: GitHub 仓库标识，例如 owner/repo
+  - name: pr_number
+    type: integer
+    description: 目标 PR 编号
+outputs:
+  - name: required_changes
+    type: list
+    description: 必须处理的修改项
+  - name: suggested_changes
+    type: list
+    description: 可选优化建议
+  - name: open_questions
+    type: list
+    description: 仍需与 reviewer 确认的问题
+tools:
+  - name: github connector
+  - name: github rest api
+  - name: gh
+workflow:
+  - step: 读取 PR 元数据、review 和评论
+  - step: 区分必须修改、建议修改和单纯讨论
+  - step: 合并重复反馈，避免重复执行
+  - step: 生成人类可直接照着做的行动项清单
+constraints:
+  - 不允许把 reviewer 的问题误判为已确认结论
+  - 不允许遗漏 requested changes 里的明确动作
