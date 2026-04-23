@@ -1,0 +1,39 @@
+id: vm-image-static-handling
+name: 虚拟机镜像静态处理
+purpose: 把已经拿到离线镜像后的识别、文件提取、格式转换和 Linux 访问恢复拆成多个可复用小能力。
+inputs:
+  - name: image_path
+    type: path
+    description: 本地镜像文件或虚拟机目录路径
+  - name: target_goal
+    type: string
+    description: 本次目标，例如提取文件、转换格式、恢复访问
+outputs:
+  - name: image_summary
+    type: string
+    description: 当前镜像类型和可操作路径摘要
+  - name: extracted_artifacts
+    type: list
+    description: 提取出的文件或目录
+  - name: converted_image
+    type: path
+    description: 转换后的镜像文件路径
+  - name: recovery_state
+    type: string
+    description: 是否完成 Linux 离线恢复访问
+tools:
+  - name: qemu-img
+  - name: guestfish
+  - name: guestmount
+  - name: qemu-nbd
+  - name: powershell
+workflow:
+  - step: 识别镜像类型并确认真实可处理对象
+  - step: 选择直接提文件还是先转换格式
+  - step: 离线提取所需文件或目录
+  - step: 在必要时转换镜像格式
+  - step: 在必要时执行 Linux 离线恢复登录访问
+constraints:
+  - 不允许把镜像静态处理写成凭证提取流程
+  - 不允许在没识别镜像结构前就盲目转换或挂载
+  - 不允许把未验证的恢复步骤假装成已跑通

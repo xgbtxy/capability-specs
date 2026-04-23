@@ -1,0 +1,30 @@
+id: identify-ppt-task-mode
+name: 识别是新建整份还是局部迭代
+purpose: 帮执行者判断本次 PPT 任务是整份新建、局部新增、局部改写还是样式优化，并明确处理范围。
+inputs:
+  - name: user_request
+    type: text
+    description: 用户原始需求描述
+  - name: source_material
+    type: path_or_text
+    description: 当前已有材料或 PPT
+outputs:
+  - name: task_mode
+    type: string
+    description: 任务模式，例如新建整份、局部新增、局部改写
+  - name: scope_summary
+    type: string
+    description: 范围说明
+  - name: next_action
+    type: string
+    description: 推荐后续动作
+tools:
+  - name: powershell
+workflow:
+  - step: 读取用户输入和已有材料
+  - step: 判断任务是新建、续写还是局部修改
+  - step: 圈定影响范围
+  - step: 输出后续动作建议
+constraints:
+  - 不允许默认把局部需求扩大成整份重做
+  - 不允许在任务范围不清时直接开始生成页面

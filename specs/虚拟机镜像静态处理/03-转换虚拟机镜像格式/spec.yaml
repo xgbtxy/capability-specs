@@ -1,0 +1,33 @@
+id: convert-vm-image-format
+name: 转换虚拟机镜像格式
+purpose: 帮执行者识别源镜像格式并使用 qemu-img 等工具转换到目标格式，生成后续可处理的镜像文件。
+inputs:
+  - name: source_image
+    type: path
+    description: 源镜像路径
+  - name: target_format
+    type: string
+    description: 目标格式，例如 qcow2、raw
+  - name: output_image
+    type: path
+    description: 输出镜像路径
+outputs:
+  - name: source_format
+    type: string
+    description: 识别出的源格式
+  - name: converted_image
+    type: path
+    description: 转换后的镜像路径
+  - name: verification_summary
+    type: string
+    description: 转换后的基本验证结果
+tools:
+  - name: qemu-img
+workflow:
+  - step: 识别源镜像格式
+  - step: 确认目标格式和输出路径
+  - step: 执行格式转换
+  - step: 用 qemu-img info 验证转换结果
+constraints:
+  - 不允许把 ovf 当作源磁盘直接转换
+  - 不允许只报告“转换成功”却不做基本验证

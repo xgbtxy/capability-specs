@@ -1,0 +1,37 @@
+id: ppt-generation-and-iteration
+name: PPT内容生成与迭代
+purpose: 把根据输入材料生成或更新可汇报 PPT 内容的链路拆成多个可复用小能力。
+inputs:
+  - name: source_material
+    type: path_or_text
+    description: 原始材料，可以是文档、笔记、Markdown、大纲或用户文字输入
+  - name: task_mode
+    type: string
+    description: 任务模式，例如新建整份、局部新增、局部改写
+  - name: existing_ppt
+    type: path
+    description: 已有 PPT 文件路径，可选
+outputs:
+  - name: page_outline
+    type: list
+    description: 页面级大纲
+  - name: draft_ppt
+    type: path
+    description: 生成的初稿 PPT 路径
+  - name: final_ppt
+    type: path
+    description: 最终可交付 PPT 路径
+tools:
+  - name: node
+  - name: pptxgenjs
+  - name: powershell
+workflow:
+  - step: 识别任务是新建整份还是局部迭代
+  - step: 把输入材料整理成页面结构
+  - step: 生成新页面或整份初稿
+  - step: 更新已有页面内容与版式
+  - step: 导出并检查最终可交付版本
+constraints:
+  - 不允许默认把所有任务都当成整份重做
+  - 不允许输出只有截图页的伪 PPT 作为正式结果
+  - 不允许只追求视觉炫技而忽略页面信息密度和可读性

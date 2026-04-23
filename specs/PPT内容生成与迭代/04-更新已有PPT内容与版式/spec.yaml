@@ -1,0 +1,31 @@
+id: update-existing-ppt-content-and-layout
+name: 更新已有PPT内容与版式
+purpose: 帮执行者在已有 PPT 上进行局部新增、局部改写和版式优化，而不是整份重做。
+inputs:
+  - name: existing_ppt
+    type: path
+    description: 已有 PPT 路径
+  - name: update_scope
+    type: string
+    description: 本次更新范围
+  - name: new_material
+    type: path_or_text
+    description: 新增或替换材料
+outputs:
+  - name: updated_slides
+    type: list
+    description: 被更新的页面
+  - name: layout_changes
+    type: string
+    description: 版式调整说明
+tools:
+  - name: node
+  - name: pptxgenjs
+workflow:
+  - step: 读取已有 PPT 和更新范围
+  - step: 判断是新增页面、替换内容还是样式优化
+  - step: 更新目标页面
+  - step: 保持与整份 PPT 风格一致
+constraints:
+  - 不允许默认整份重做
+  - 不允许破坏未在范围内的页面结构

@@ -1,0 +1,30 @@
+id: export-and-check-final-deliverable-ppt
+name: 导出并检查最终可交付版本
+purpose: 帮执行者导出最终 `.pptx` 并做最小交付检查，确认标题、文本、图片和页面结构没有明显问题。
+inputs:
+  - name: ppt_source
+    type: path
+    description: 当前待导出的 PPT 源文件或脚本输入
+  - name: output_path
+    type: path
+    description: 最终输出路径
+outputs:
+  - name: final_ppt
+    type: path
+    description: 最终 `.pptx` 路径
+  - name: check_summary
+    type: string
+    description: 基本检查结果
+  - name: manual_review_points
+    type: list
+    description: 仍需人工检查的点
+tools:
+  - name: node
+  - name: pptxgenjs
+workflow:
+  - step: 导出最终 `.pptx`
+  - step: 检查页数、标题、文本和图片布局
+  - step: 列出仍需人工确认的细节
+constraints:
+  - 不允许把未检查的初稿直接宣称为最终交付版
+  - 不允许忽略明显的标题溢出和图片变形

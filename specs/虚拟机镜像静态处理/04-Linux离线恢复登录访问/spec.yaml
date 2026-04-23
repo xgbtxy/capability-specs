@@ -1,0 +1,36 @@
+id: recover-linux-login-access-offline
+name: Linux离线恢复登录访问
+purpose: 帮执行者在持有 Linux 离线镜像时，通过修改认证相关文件或注入可登录方式恢复系统访问。
+inputs:
+  - name: image_path
+    type: path
+    description: Linux 磁盘镜像路径
+  - name: recovery_method
+    type: string
+    description: 恢复方式，例如重置访问、注入 SSH 公钥、修复认证配置
+  - name: target_user
+    type: string
+    description: 目标用户，例如 root 或指定管理员账户
+outputs:
+  - name: modified_files
+    type: list
+    description: 离线修改过的关键文件
+  - name: recovery_summary
+    type: string
+    description: 恢复方式和后续登录说明
+  - name: validation_state
+    type: string
+    description: 是否完成最小验证
+tools:
+  - name: guestfish
+  - name: guestmount
+workflow:
+  - step: 识别 Linux 根文件系统并以可控方式挂载
+  - step: 定位认证相关文件和目标用户
+  - step: 采用恢复访问的方式修改认证配置
+  - step: 记录修改过的关键文件
+  - step: 说明后续如何进入系统并重新设置访问方式
+constraints:
+  - 不允许把能力写成提取原密码或秘密材料
+  - 不允许在未识别发行版和文件结构前盲改关键认证文件
+  - 不允许把未实战验证的细节假装成完全通用
