@@ -1,0 +1,32 @@
+id: extract-files-from-offline-vm-image
+name: 离线从虚拟机镜像提取文件
+purpose: 帮执行者从离线虚拟机镜像中只读提取指定文件或目录，并保存到本地输出路径。
+inputs:
+  - name: image_path
+    type: path
+    description: 已确认可处理的磁盘镜像路径
+  - name: guest_path
+    type: string
+    description: 镜像内部要提取的文件或目录路径
+  - name: output_path
+    type: path
+    description: 本地输出路径
+outputs:
+  - name: extracted_files
+    type: list
+    description: 提取出的文件或目录
+  - name: extraction_result
+    type: string
+    description: 提取结果说明
+tools:
+  - name: guestfish
+  - name: guestmount
+workflow:
+  - step: 以只读方式打开镜像
+  - step: 识别分区和根文件系统
+  - step: 定位目标文件或目录
+  - step: 提取到本地输出路径
+  - step: 确认提取结果
+constraints:
+  - 不允许默认写入原镜像
+  - 不允许在未确认路径前全量导出整个文件系统

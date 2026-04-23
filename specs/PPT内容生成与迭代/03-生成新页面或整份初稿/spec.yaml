@@ -1,0 +1,28 @@
+id: generate-new-pages-or-full-draft-ppt
+name: 生成新页面或整份初稿
+purpose: 帮执行者根据页面级大纲生成第一版 PPT，可以是整份初稿，也可以是新增页面。
+inputs:
+  - name: page_outline
+    type: list
+    description: 页面级大纲
+  - name: template_requirements
+    type: string
+    description: 模板、配色、字体等要求
+outputs:
+  - name: draft_ppt
+    type: path
+    description: 初稿 PPT 路径
+  - name: slide_count
+    type: integer
+    description: 生成页数
+tools:
+  - name: node
+  - name: pptxgenjs
+workflow:
+  - step: 读取页面结构
+  - step: 选择页面模板和版式
+  - step: 生成初稿页面
+  - step: 输出可编辑的 pptx 文件
+constraints:
+  - 不允许只输出截图型页面作为正式初稿
+  - 不允许忽略统一模板和层级结构

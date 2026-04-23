@@ -1,0 +1,39 @@
+id: create-pr-with-clear-description
+name: 创建PR并说明变更
+purpose: 帮执行者把已经推送到远端的分支整理成一个标题清楚、说明完整的 PR。
+inputs:
+  - name: repo_identifier
+    type: string
+    description: GitHub 仓库标识，例如 owner/repo
+  - name: base_branch
+    type: string
+    description: 目标合并分支，通常为 main 或开发主线
+  - name: head_branch
+    type: string
+    description: 已推送的工作分支
+  - name: change_summary
+    type: string
+    description: 本次改动的核心内容
+outputs:
+  - name: pr_title
+    type: string
+    description: PR 标题
+  - name: pr_body
+    type: string
+    description: PR 正文
+  - name: pr_url
+    type: string
+    description: 创建完成后的 PR 地址
+tools:
+  - name: github rest api
+  - name: gh
+  - name: github connector
+workflow:
+  - step: 确认 base 分支和 head 分支对应关系
+  - step: 根据改动内容生成清晰标题
+  - step: 根据改动范围、风险和验证情况生成正文
+  - step: 创建 PR
+  - step: 返回 PR 链接和后续协作提示
+constraints:
+  - 不允许在分支尚未推送时假装已创建 PR
+  - 不允许用空标题或无意义正文创建 PR

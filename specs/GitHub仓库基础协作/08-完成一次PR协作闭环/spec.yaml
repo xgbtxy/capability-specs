@@ -1,0 +1,35 @@
+id: close-the-loop-of-pr-collaboration
+name: 完成一次PR协作闭环
+purpose: 帮执行者把一次 GitHub 仓库协作从查看状态到 PR 更新串成完整链路，并确认当前所处阶段和下一步动作。
+inputs:
+  - name: repo_path
+    type: path
+    description: 本地仓库路径
+  - name: repo_identifier
+    type: string
+    description: GitHub 仓库标识，例如 owner/repo
+  - name: pr_number
+    type: integer
+    description: 当前协作对应的 PR 编号
+outputs:
+  - name: workflow_state
+    type: string
+    description: 当前协作处于哪一阶段
+  - name: completed_steps
+    type: list
+    description: 已完成步骤
+  - name: next_action
+    type: string
+    description: 下一步建议
+tools:
+  - name: git
+  - name: github connector
+  - name: github rest api
+workflow:
+  - step: 回看仓库、分支和 PR 当前状态
+  - step: 识别这一轮协作已完成的关键动作
+  - step: 判断当前是在等待、继续修订还是需要补动作
+  - step: 输出下一步建议
+constraints:
+  - 不允许把未完成状态说成已闭环
+  - 不允许忽略仍未处理的 reviewer 反馈

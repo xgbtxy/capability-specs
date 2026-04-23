@@ -1,0 +1,28 @@
+id: identify-image-type-and-operation-path
+name: 识别镜像类型并确认可操作路径
+purpose: 帮执行者识别手里的镜像或目录结构，并确认真实可处理的磁盘文件和下一步操作路径。
+inputs:
+  - name: image_path
+    type: path
+    description: 本地镜像文件或虚拟机目录路径
+outputs:
+  - name: image_type
+    type: string
+    description: 输入对象类型，例如 ova、ovf、vmdk、qcow2、目录
+  - name: real_disk_targets
+    type: list
+    description: 真实可处理的磁盘文件列表
+  - name: next_action
+    type: string
+    description: 建议下一步动作
+tools:
+  - name: qemu-img
+  - name: powershell
+workflow:
+  - step: 检查输入对象是单文件还是目录
+  - step: 判断其是容器文件、描述文件还是实际磁盘文件
+  - step: 在多盘场景下列出真实可处理磁盘
+  - step: 给出直接提文件、先转换格式或先解包的建议
+constraints:
+  - 不允许把 ovf 当成磁盘直接处理
+  - 不允许在未识别结构前直接进入恢复操作

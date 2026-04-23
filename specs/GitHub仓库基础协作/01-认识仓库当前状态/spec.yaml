@@ -1,0 +1,29 @@
+id: inspect-current-repo-state
+name: 认识仓库当前状态
+purpose: 帮执行者在开始工作前快速看懂仓库路径、当前分支、工作树状态、远端信息和最近变更。
+inputs:
+  - name: repo_path
+    type: path
+    description: 本地仓库路径
+outputs:
+  - name: repo_summary
+    type: string
+    description: 当前仓库状态摘要
+  - name: current_branch
+    type: string
+    description: 当前分支名
+  - name: working_tree_state
+    type: string
+    description: 工作树是否干净
+tools:
+  - name: git
+  - name: powershell
+workflow:
+  - step: 确认当前目录是否为 Git 仓库
+  - step: 检查当前分支和工作树状态
+  - step: 检查远端仓库信息
+  - step: 查看最近提交或变更摘要
+  - step: 用自然语言总结仓库当前情况
+constraints:
+  - 不允许在状态不明时直接开始修改
+  - 不允许把脏工作树误说成干净状态

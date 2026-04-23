@@ -1,0 +1,27 @@
+id: structure-source-material-into-pages
+name: 把输入材料整理成页面结构
+purpose: 帮执行者把原始输入材料整理成页面级 PPT 大纲，包括每页标题和关键点。
+inputs:
+  - name: source_material
+    type: path_or_text
+    description: 原始材料
+  - name: task_mode
+    type: string
+    description: 当前是新建还是迭代
+outputs:
+  - name: page_outline
+    type: list
+    description: 页面级结构
+  - name: storyline_summary
+    type: string
+    description: 汇报叙事摘要
+tools:
+  - name: powershell
+workflow:
+  - step: 阅读原始材料
+  - step: 提炼章节和关键信息
+  - step: 压缩成页面级表达
+  - step: 形成一页一页的结构
+constraints:
+  - 不允许机械照搬原文到每页
+  - 不允许一页塞入过多重点
