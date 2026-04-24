@@ -1,0 +1,28 @@
+id: windows-add-printer-and-validate
+name: 在Windows添加打印机并验证打印
+purpose: 在 Windows 中完成打印机添加、队列确认和测试打印。
+inputs:
+  - name: printer_address
+    type: string
+    description: 打印机 IP 或主机名
+  - name: driver_package
+    type: string
+    description: 已安装好的驱动
+outputs:
+  - name: printer_queue
+    type: string
+    description: Windows 中的打印机队列名称
+  - name: test_print_result
+    type: string
+    description: 测试打印结果
+tools:
+  - name: windows-settings
+  - name: powershell
+workflow:
+  - step: 创建打印机端口
+  - step: 选择已安装驱动
+  - step: 添加打印机队列
+  - step: 打印测试页并验证
+constraints:
+  - 不允许只看到队列存在就判断成功
+  - 不允许跳过测试打印

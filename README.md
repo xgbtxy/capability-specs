@@ -30,6 +30,7 @@
 ## 当前能力
 
 - [specs/GitHub仓库基础协作](./specs/GitHub仓库基础协作)
+- [specs/Windows连接打印机与驱动处理](./specs/Windows连接打印机与驱动处理)
 - [specs/虚拟机镜像静态处理](./specs/虚拟机镜像静态处理)
 - [specs/PPT内容生成与迭代](./specs/PPT内容生成与迭代)
 - [specs/做事前后检查](./specs/做事前后检查)

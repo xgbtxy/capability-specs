@@ -1,0 +1,22 @@
+id: printer-web-and-model-identification
+name: 访问打印机Web页并确认型号
+purpose: 用打印机 Web 页面或机身信息确认准确型号，避免后续驱动找错。
+inputs:
+  - name: printer_address
+    type: string
+    description: 打印机 IP 或主机名
+outputs:
+  - name: printer_model
+    type: string
+    description: 确认后的准确型号
+  - name: web_access_state
+    type: string
+    description: 是否能访问 Web 管理页
+tools:
+  - name: browser
+workflow:
+  - step: 访问打印机 Web 页面
+  - step: 查找设备信息和型号
+  - step: 记录准确型号
+constraints:
+  - 不允许只凭品牌就进入驱动下载步骤

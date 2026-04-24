@@ -1,0 +1,27 @@
+id: printer-driver-search-and-install
+name: 查找并安装正确驱动
+purpose: 根据准确型号查找并安装正确的 Windows 打印机驱动。
+inputs:
+  - name: printer_model
+    type: string
+    description: 已确认的打印机准确型号
+  - name: windows_version
+    type: string
+    description: 当前 Windows 版本和位数
+outputs:
+  - name: driver_package
+    type: string
+    description: 最终采用的驱动包
+  - name: install_state
+    type: string
+    description: 驱动安装状态
+tools:
+  - name: browser
+  - name: windows-update
+workflow:
+  - step: 用准确型号搜索驱动
+  - step: 按系统版本和位数筛选驱动
+  - step: 安装驱动并确认是否可用
+constraints:
+  - 不允许优先使用第三方下载站
+  - 不允许型号不匹配仍强行装驱动

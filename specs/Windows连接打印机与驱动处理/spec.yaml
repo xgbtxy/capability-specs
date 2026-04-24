@@ -1,0 +1,40 @@
+id: windows-printer-setup-and-driver-handling
+name: Windows连接打印机与驱动处理
+purpose: 把确认打印机地址、确认型号、查找驱动、添加打印机和验证打印拆成多个可复用小能力。
+inputs:
+  - name: printer_hint
+    type: string
+    description: 已知的打印机信息，例如 IP、主机名、品牌、摆放位置
+  - name: windows_version
+    type: string
+    description: 当前 Windows 版本，例如 Windows 10 或 Windows 11
+  - name: connection_type
+    type: string
+    description: USB、有线网络、无线网络或共享打印机
+outputs:
+  - name: printer_identity
+    type: string
+    description: 打印机 IP、主机名和型号摘要
+  - name: driver_source
+    type: string
+    description: 最终采用的驱动来源
+  - name: printer_queue
+    type: string
+    description: Windows 中已添加的打印机队列名称
+  - name: validation_result
+    type: string
+    description: 是否完成连通和打印验证
+tools:
+  - name: windows-settings
+  - name: powershell
+  - name: browser
+  - name: vendor-support-site
+workflow:
+  - step: 确认打印机地址与连接方式
+  - step: 访问打印机 Web 页或机身面板确认型号
+  - step: 查找并安装正确驱动
+  - step: 在 Windows 中添加打印机并验证打印
+constraints:
+  - 不允许在没确认型号前就盲目安装驱动
+  - 不允许优先使用第三方驱动下载站
+  - 不允许把“打印机被发现”当成“已经可以稳定打印”
