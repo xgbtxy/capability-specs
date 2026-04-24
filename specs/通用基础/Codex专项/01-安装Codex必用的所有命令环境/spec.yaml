@@ -1,0 +1,25 @@
+id: install-codex-required-cli-environment
+name: 安装Codex必用的所有命令环境
+purpose: 先装好 Codex 高频会调用的命令环境，减少开工前的缺工具问题。
+inputs:
+  - name: local_environment
+    type: string
+    description: 当前本机环境，例如 Windows、macOS、Linux 或 WSL
+outputs:
+  - name: installed_tools
+    type: string
+    description: 已安装并可用的 Codex 常用工具清单
+  - name: missing_tools
+    type: string
+    description: 仍然缺失的关键工具
+tools:
+  - name: powershell
+  - name: package-manager
+  - name: browser
+workflow:
+  - step: 先检查 Codex 高频常用命令是否存在
+  - step: 缺什么补什么
+  - step: 安装后逐个验证版本和命令可用性
+constraints:
+  - 不允许跳过版本检查
+  - 不允许只装项目工具而忽略 Codex 基础命令环境

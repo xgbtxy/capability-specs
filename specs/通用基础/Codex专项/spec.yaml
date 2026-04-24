@@ -1,0 +1,20 @@
+id: codex-special
+name: Codex专项
+purpose: 围绕 Codex 单独沉淀一组可复用能力，先从开工前必用命令环境开始。
+inputs:
+  - name: local_environment
+    type: string
+    description: 当前本机环境，例如 Windows、macOS、Linux 或 WSL
+outputs:
+  - name: codex_ready_environment
+    type: string
+    description: 是否已经具备 Codex 常用命令环境
+tools:
+  - name: powershell
+  - name: package-manager
+  - name: browser
+workflow:
+  - step: 安装Codex必用的所有命令环境
+constraints:
+  - 先装 Codex 高频必用工具，再看具体项目工具
+  - 不把“装过”当成“能用”
