@@ -1,0 +1,3 @@
+id: archive-identify-type-and-goal
+name: 识别压缩包类型与处理目标
+purpose: 在处理前确认压缩包类型和目标动作。

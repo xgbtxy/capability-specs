@@ -1,0 +1,3 @@
+id: archive-extract-and-inspect
+name: 解压与查看压缩包内容
+purpose: 用 7-Zip 解压并查看压缩包内容。

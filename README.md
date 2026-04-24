@@ -24,6 +24,7 @@
 
 ## 当前能力
 
+- [specs/压缩包整理、加密与交付](./specs/压缩包整理、加密与交付)
 - [specs/FFmpeg媒体处理](./specs/FFmpeg媒体处理)
 - [specs/Pandoc文档转换与发布](./specs/Pandoc文档转换与发布)
 - [specs/Playwright浏览器自动化](./specs/Playwright浏览器自动化)

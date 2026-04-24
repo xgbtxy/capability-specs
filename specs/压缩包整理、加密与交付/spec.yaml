@@ -1,0 +1,32 @@
+id: archive-packaging-encryption-and-delivery
+name: 压缩包整理、加密与交付
+purpose: 把压缩包识别、解压查看、压缩分卷加密和交付验证拆成多个可复用小能力。
+inputs:
+  - name: archive_input
+    type: path
+    description: 输入压缩包或待打包目录
+  - name: target_goal
+    type: string
+    description: 处理目标，例如解压、打包、分卷、加密、交付
+outputs:
+  - name: archive_summary
+    type: string
+    description: 当前压缩包或打包目标摘要
+  - name: processed_archive
+    type: path_or_list
+    description: 解压结果或生成的压缩包
+  - name: validation_summary
+    type: string
+    description: 压缩包是否可正常交付
+tools:
+  - name: 7zip
+  - name: powershell
+workflow:
+  - step: 识别压缩包类型与处理目标
+  - step: 解压与查看压缩包内容
+  - step: 压缩分卷与加密打包
+  - step: 验证压缩包是否可正常交付
+constraints:
+  - 不允许在没确认目标前就直接覆盖原压缩包
+  - 不允许只打包不验证能否正常解压
+  - 不允许把分卷、加密和普通压缩混成一条模糊流程

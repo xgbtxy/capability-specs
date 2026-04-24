@@ -1,0 +1,3 @@
+id: archive-compress-split-encrypt
+name: 压缩分卷与加密打包
+purpose: 用 7-Zip 完成压缩、分卷和加密打包。

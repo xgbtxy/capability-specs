@@ -1,0 +1,3 @@
+id: archive-validate-delivery
+name: 验证压缩包是否可正常交付
+purpose: 在交付前验证压缩包、分卷和密码是否可正常使用。
