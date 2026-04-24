@@ -1,0 +1,3 @@
+id: offline-reinstall-io-check
+name: 确认离线重装输入与输出
+purpose: 在离线重装前确认输入镜像、目标系统和输出路径。

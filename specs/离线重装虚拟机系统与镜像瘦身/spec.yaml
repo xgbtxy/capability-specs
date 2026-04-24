@@ -1,0 +1,40 @@
+id: offline-vm-reinstall-and-image-shrinking
+name: 离线重装虚拟机系统与镜像瘦身
+purpose: 把离线重建系统盘、清理历史痕迹和离线稀疏化镜像拆成多个可复用小能力。
+inputs:
+  - name: source_image
+    type: path
+    description: 原始虚拟机镜像或系统盘路径
+  - name: target_system
+    type: string
+    description: 目标系统，例如干净的 CentOS
+  - name: output_image
+    type: path
+    description: 输出镜像路径
+outputs:
+  - name: rebuild_summary
+    type: string
+    description: 离线重建结果摘要
+  - name: cleaned_image
+    type: path
+    description: 清理后的镜像路径
+  - name: shrunk_image
+    type: path
+    description: 稀疏化后的镜像路径
+  - name: size_validation
+    type: string
+    description: 瘦身前后体积变化摘要
+tools:
+  - name: guestfish
+  - name: virt-sysprep
+  - name: virt-sparsify
+  - name: qemu-img
+workflow:
+  - step: 确认离线重装输入与输出
+  - step: 离线重建干净系统盘
+  - step: 离线清理历史痕迹与无用数据
+  - step: 离线稀疏化并验证镜像体积
+constraints:
+  - 不允许把在线重装流程混进来
+  - 不允许在没确认输出路径前直接覆盖原镜像
+  - 不允许只重建系统不验证镜像体积变化

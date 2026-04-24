@@ -1,0 +1,3 @@
+id: offline-clean-history-and-unused-data
+name: 离线清理历史痕迹与无用数据
+purpose: 离线清理系统标识、日志、缓存和无用数据。
