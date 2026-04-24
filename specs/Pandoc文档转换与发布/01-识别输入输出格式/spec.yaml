@@ -1,0 +1,3 @@
+id: pandoc-identify-formats
+name: 识别输入输出格式
+purpose: 确认文档输入格式和输出目标。

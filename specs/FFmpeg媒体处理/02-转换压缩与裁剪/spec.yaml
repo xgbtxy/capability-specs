@@ -1,0 +1,3 @@
+id: ffmpeg-convert-compress-trim
+name: 转换压缩与裁剪
+purpose: 用 ffmpeg 完成转码、压缩和裁剪。

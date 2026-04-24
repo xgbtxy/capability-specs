@@ -1,0 +1,3 @@
+id: jq-save-and-validate
+name: 保存输出并验证结果
+purpose: 保存 jq 处理结果并验证输出是否正确。

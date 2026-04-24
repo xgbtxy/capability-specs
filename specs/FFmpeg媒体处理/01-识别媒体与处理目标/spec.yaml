@@ -1,0 +1,3 @@
+id: ffmpeg-identify-media
+name: 识别媒体与处理目标
+purpose: 用 ffprobe 看清媒体结构并确定处理目标。

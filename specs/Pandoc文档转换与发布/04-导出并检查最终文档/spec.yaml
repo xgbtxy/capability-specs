@@ -1,0 +1,3 @@
+id: pandoc-export-and-validate
+name: 导出并检查最终文档
+purpose: 导出转换结果并验证最终文档可用。

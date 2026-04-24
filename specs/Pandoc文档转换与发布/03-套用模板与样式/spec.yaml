@@ -1,0 +1,3 @@
+id: pandoc-templates-and-styles
+name: 套用模板与样式
+purpose: 用模板、reference doc 或 filters 控制输出样式。

@@ -1,0 +1,3 @@
+id: playwright-check-preconditions
+name: 确认站点与登录前提
+purpose: 在自动化前确认目标站点、账号和前提条件。

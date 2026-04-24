@@ -1,0 +1,25 @@
+id: jq-json-processing
+name: jq处理JSON数据
+purpose: 把 JSON 结构查看、字段筛选、结构重组和批量处理拆成多个可复用小能力。
+inputs:
+  - name: json_input
+    type: path_or_text
+    description: JSON 文件、API 返回或日志中的 JSON
+outputs:
+  - name: structure_summary
+    type: string
+    description: JSON 结构摘要
+  - name: filtered_output
+    type: path_or_text
+    description: 筛选或重组后的结果
+tools:
+  - name: jq
+  - name: powershell
+workflow:
+  - step: 查看JSON结构
+  - step: 筛选提取与重组字段
+  - step: 批量处理API和日志JSON
+  - step: 保存输出并验证结果
+constraints:
+  - 不允许没看清结构就写复杂 jq 过滤器
+  - 不允许把单条 JSON 的命令直接盲目放大到批量

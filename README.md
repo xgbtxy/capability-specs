@@ -29,6 +29,10 @@
 
 ## 当前能力
 
+- [specs/FFmpeg媒体处理](./specs/FFmpeg媒体处理)
+- [specs/Pandoc文档转换与发布](./specs/Pandoc文档转换与发布)
+- [specs/Playwright浏览器自动化](./specs/Playwright浏览器自动化)
+- [specs/jq处理JSON数据](./specs/jq处理JSON数据)
 - [specs/开始项目前让大模型安装常用工具和项目工具](./specs/开始项目前让大模型安装常用工具和项目工具)
 - [specs/GitHub仓库基础协作](./specs/GitHub仓库基础协作)
 - [specs/Windows连接打印机与驱动处理](./specs/Windows连接打印机与驱动处理)

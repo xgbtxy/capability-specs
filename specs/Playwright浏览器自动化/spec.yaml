@@ -1,0 +1,29 @@
+id: playwright-browser-automation
+name: Playwright浏览器自动化
+purpose: 把站点自动化、抓取、导出、截图和结果验证拆成多个可复用小能力。
+inputs:
+  - name: target_site
+    type: string
+    description: 目标站点或后台地址
+  - name: automation_goal
+    type: string
+    description: 自动化目标，例如登录、截图、导出、表单提交、抓取
+outputs:
+  - name: automation_script
+    type: path_or_text
+    description: 自动化脚本或步骤摘要
+  - name: automation_output
+    type: path_or_list
+    description: 截图、导出文件或抓取结果
+tools:
+  - name: playwright
+  - name: browser
+  - name: node
+workflow:
+  - step: 确认站点与登录前提
+  - step: 编写自动化步骤
+  - step: 抓取导出截图与表单处理
+  - step: 验证自动化结果与回退
+constraints:
+  - 不允许在没确认前提下直接跑自动化
+  - 不允许忽略登录态、验证码或权限边界

@@ -1,0 +1,3 @@
+id: ffmpeg-extract-streams
+name: 提取音频字幕与帧
+purpose: 用 ffmpeg 从媒体中提取音频、字幕、缩略图和帧图。

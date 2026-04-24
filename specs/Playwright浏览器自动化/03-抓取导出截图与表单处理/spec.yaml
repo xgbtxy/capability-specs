@@ -1,0 +1,3 @@
+id: playwright-actions-and-output
+name: 抓取导出截图与表单处理
+purpose: 用 Playwright 完成抓取、表单、导出和截图。

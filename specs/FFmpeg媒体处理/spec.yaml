@@ -1,0 +1,33 @@
+id: ffmpeg-media-processing
+name: FFmpeg媒体处理
+purpose: 把媒体识别、格式转换、压缩裁剪、提取和批量验证拆成多个可复用小能力。
+inputs:
+  - name: media_input
+    type: path
+    description: 输入媒体文件或目录
+  - name: target_goal
+    type: string
+    description: 处理目标，例如转码、压缩、裁剪、抽音频、抽帧
+outputs:
+  - name: media_summary
+    type: string
+    description: 输入媒体信息摘要
+  - name: processed_output
+    type: path_or_list
+    description: 处理后的输出文件
+  - name: validation_summary
+    type: string
+    description: 输出是否可用
+tools:
+  - name: ffmpeg
+  - name: ffprobe
+  - name: powershell
+workflow:
+  - step: 识别媒体与处理目标
+  - step: 转换压缩与裁剪
+  - step: 提取音频字幕与帧
+  - step: 批量处理并验证输出
+constraints:
+  - 不允许在没看清输入参数前就盲目转码
+  - 不允许只看命令成功不验证输出可播放性
+  - 不允许默认覆盖原文件

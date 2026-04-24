@@ -1,0 +1,3 @@
+id: jq-filter-extract-reshape
+name: 筛选提取与重组字段
+purpose: 用 jq 筛选、提取和重组 JSON 字段。

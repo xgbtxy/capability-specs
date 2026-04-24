@@ -1,0 +1,3 @@
+id: pandoc-convert-formats
+name: 转换文档格式
+purpose: 用 pandoc 做文档格式转换。

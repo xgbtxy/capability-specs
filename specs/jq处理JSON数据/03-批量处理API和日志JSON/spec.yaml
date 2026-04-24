@@ -1,0 +1,3 @@
+id: jq-batch-api-log-processing
+name: 批量处理API和日志JSON
+purpose: 用 jq 批量处理 API 和日志里的 JSON。

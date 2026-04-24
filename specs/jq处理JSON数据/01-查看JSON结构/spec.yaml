@@ -1,0 +1,3 @@
+id: jq-inspect-structure
+name: 查看JSON结构
+purpose: 用 jq 先看清 JSON 结构。
