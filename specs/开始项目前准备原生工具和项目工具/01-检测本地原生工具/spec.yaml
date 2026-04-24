@@ -1,0 +1,19 @@
+id: detect-local-native-tools
+name: 检测本地原生工具
+purpose: 在开工前检测本机是否已有基础终端、运行时和包管理器。
+inputs:
+  - name: local_environment
+    type: string
+    description: 当前本机环境
+outputs:
+  - name: native_tool_summary
+    type: string
+    description: 当前已有和缺失的原生工具摘要
+tools:
+  - name: powershell
+workflow:
+  - step: 检测终端
+  - step: 检测 Git、Python、Node.js、包管理器
+  - step: 记录现状
+constraints:
+  - 不允许跳过基础工具检测

@@ -1,0 +1,33 @@
+id: prepare-native-tools-and-project-tools
+name: 开始项目前准备原生工具和项目工具
+purpose: 把开工前检测本地原生工具、明确项目目标、安装项目工具和验证可用性拆成多个可复用小能力。
+inputs:
+  - name: local_environment
+    type: string
+    description: 当前本机环境，例如 Windows、macOS、Linux 或 WSL
+  - name: project_goal
+    type: string
+    description: 用户当前要做的事，例如前端项目、Python 脚本、容器部署、文档生成
+outputs:
+  - name: native_tool_summary
+    type: string
+    description: 当前本机已有原生工具摘要
+  - name: project_tool_plan
+    type: string
+    description: 根据项目目标生成的工具安装计划
+  - name: usable_environment
+    type: string
+    description: 当前环境是否已达到可开工状态
+tools:
+  - name: powershell
+  - name: package-manager
+  - name: browser
+workflow:
+  - step: 检测本地原生工具
+  - step: 询问用户要做什么事
+  - step: 按项目目标安装项目工具
+  - step: 验证工具是否真的可用
+constraints:
+  - 不允许在没搞清项目目标前就盲目安装一堆工具
+  - 不允许把“已经安装”当成“已经可用”
+  - 不允许把项目工具和原生工具混成一层

@@ -1,0 +1,21 @@
+id: install-project-tools-by-goal
+name: 按项目目标安装项目工具
+purpose: 根据项目目标只安装当前项目真正需要的工具。
+inputs:
+  - name: project_type_summary
+    type: string
+    description: 已确认的项目目标和工具需求
+outputs:
+  - name: install_plan
+    type: string
+    description: 实际安装的项目工具和方式
+tools:
+  - name: package-manager
+  - name: browser
+workflow:
+  - step: 列出需要的项目工具
+  - step: 选择官方安装方式
+  - step: 完成安装
+constraints:
+  - 不允许盲目全装
+  - 不允许优先用第三方下载站

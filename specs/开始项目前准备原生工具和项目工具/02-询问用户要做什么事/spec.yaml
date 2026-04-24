@@ -1,0 +1,19 @@
+id: clarify-project-goal
+name: 询问用户要做什么事
+purpose: 在安装项目工具前，先明确用户这次到底要做什么和需要哪类工具。
+inputs:
+  - name: project_goal
+    type: string
+    description: 用户口头描述或已有项目目录
+outputs:
+  - name: project_type_summary
+    type: string
+    description: 当前项目目标和可能所需工具摘要
+tools:
+  - name: powershell
+workflow:
+  - step: 询问用户项目目标
+  - step: 从项目文件中找技术栈线索
+  - step: 归纳项目工具需求
+constraints:
+  - 不允许项目目标没搞清楚就开始安装

@@ -29,6 +29,7 @@
 
 ## 当前能力
 
+- [specs/开始项目前准备原生工具和项目工具](./specs/开始项目前准备原生工具和项目工具)
 - [specs/GitHub仓库基础协作](./specs/GitHub仓库基础协作)
 - [specs/Windows连接打印机与驱动处理](./specs/Windows连接打印机与驱动处理)
 - [specs/虚拟机镜像静态处理](./specs/虚拟机镜像静态处理)

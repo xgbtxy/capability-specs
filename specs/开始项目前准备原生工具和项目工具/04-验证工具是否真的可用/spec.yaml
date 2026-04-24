@@ -1,0 +1,19 @@
+id: validate-tools-are-usable
+name: 验证工具是否真的可用
+purpose: 在安装后确认工具不仅存在，而且真的可以用于当前项目。
+inputs:
+  - name: install_plan
+    type: string
+    description: 已安装的项目工具和原生工具摘要
+outputs:
+  - name: usable_environment
+    type: string
+    description: 当前环境是否可开工
+tools:
+  - name: powershell
+workflow:
+  - step: 跑版本检查
+  - step: 跑最小初始化或帮助命令
+  - step: 确认是否达到可开工状态
+constraints:
+  - 不允许只看安装成功日志
