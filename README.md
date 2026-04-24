@@ -24,20 +24,34 @@
 
 ## 当前能力
 
-- [specs/通过询问生成方案和材料](./specs/通过询问生成方案和材料)
-- [specs/SSH远程连接服务器并开始操作](./specs/SSH远程连接服务器并开始操作)
-- [specs/把服务器变成代理节点并拉满性能](./specs/把服务器变成代理节点并拉满性能)
-- [specs/根据代理客户端生成连接配置](./specs/根据代理客户端生成连接配置)
-- [specs/压缩包整理、加密与交付](./specs/压缩包整理、加密与交付)
-- [specs/FFmpeg媒体处理](./specs/FFmpeg媒体处理)
-- [specs/Pandoc文档转换与发布](./specs/Pandoc文档转换与发布)
-- [specs/Playwright浏览器自动化](./specs/Playwright浏览器自动化)
-- [specs/jq处理JSON数据](./specs/jq处理JSON数据)
-- [specs/离线重装虚拟机系统与镜像瘦身](./specs/离线重装虚拟机系统与镜像瘦身)
-- [specs/开始项目前让大模型安装常用工具和项目工具](./specs/开始项目前让大模型安装常用工具和项目工具)
-- [specs/GitHub仓库基础协作](./specs/GitHub仓库基础协作)
-- [specs/Windows连接打印机与驱动处理](./specs/Windows连接打印机与驱动处理)
-- [specs/虚拟机镜像静态处理](./specs/虚拟机镜像静态处理)
-- [specs/PPT内容生成与迭代](./specs/PPT内容生成与迭代)
-- [specs/做事前后检查](./specs/做事前后检查)
-- [specs/_template](./specs/_template)
+### 通用基础
+
+- [specs/通用基础/开始项目前让大模型安装常用工具和项目工具](./specs/通用基础/开始项目前让大模型安装常用工具和项目工具)
+- [specs/通用基础/通过询问生成方案和材料](./specs/通用基础/通过询问生成方案和材料)
+- [specs/通用基础/做事前后检查](./specs/通用基础/做事前后检查)
+- [specs/通用基础/_template](./specs/通用基础/_template)
+
+### 协作与材料
+
+- [specs/协作与材料/GitHub仓库基础协作](./specs/协作与材料/GitHub仓库基础协作)
+- [specs/协作与材料/PPT内容生成与迭代](./specs/协作与材料/PPT内容生成与迭代)
+- [specs/协作与材料/Pandoc文档转换与发布](./specs/协作与材料/Pandoc文档转换与发布)
+
+### 服务器与代理
+
+- [specs/服务器与代理/SSH远程连接服务器并开始操作](./specs/服务器与代理/SSH远程连接服务器并开始操作)
+- [specs/服务器与代理/把服务器变成代理节点并拉满性能](./specs/服务器与代理/把服务器变成代理节点并拉满性能)
+- [specs/服务器与代理/根据代理客户端生成连接配置](./specs/服务器与代理/根据代理客户端生成连接配置)
+
+### 系统与设备
+
+- [specs/系统与设备/Windows连接打印机与驱动处理](./specs/系统与设备/Windows连接打印机与驱动处理)
+- [specs/系统与设备/虚拟机镜像静态处理](./specs/系统与设备/虚拟机镜像静态处理)
+- [specs/系统与设备/离线重装虚拟机系统与镜像瘦身](./specs/系统与设备/离线重装虚拟机系统与镜像瘦身)
+
+### 通用工具
+
+- [specs/通用工具/压缩包整理、加密与交付](./specs/通用工具/压缩包整理、加密与交付)
+- [specs/通用工具/FFmpeg媒体处理](./specs/通用工具/FFmpeg媒体处理)
+- [specs/通用工具/jq处理JSON数据](./specs/通用工具/jq处理JSON数据)
+- [specs/通用工具/Playwright浏览器自动化](./specs/通用工具/Playwright浏览器自动化)
