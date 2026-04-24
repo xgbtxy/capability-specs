@@ -1,0 +1,20 @@
+id: generate-v2ray-or-xray-client-config
+name: 生成v2ray或xray客户端配置
+purpose: 根据服务端参数生成能直接用于 v2ray 或 Xray 客户端的 JSON 配置。
+inputs:
+  - name: server_connection_params
+    type: string
+    description: 已整理好的连接参数
+outputs:
+  - name: client_json
+    type: string
+    description: 生成的客户端 JSON
+tools:
+  - name: xray
+  - name: text-editor
+workflow:
+  - step: 选择客户端 JSON 结构
+  - step: 填入真实连接参数
+  - step: 检查是否存在无效引用或多余项
+constraints:
+  - 不允许保留没定义的 inboundTag 或 outboundTag

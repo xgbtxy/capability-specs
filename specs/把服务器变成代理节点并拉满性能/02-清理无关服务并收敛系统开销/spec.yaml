@@ -1,0 +1,20 @@
+id: disable-unrelated-services-for-proxy-node
+name: 清理无关服务并收敛系统开销
+purpose: 停掉对代理节点没有价值的服务，减少失败单元、日志噪音和资源开销。
+inputs:
+  - name: enabled_services
+    type: string
+    description: 当前启用服务列表
+outputs:
+  - name: disabled_services
+    type: string
+    description: 最终禁用的无关服务列表
+tools:
+  - name: systemctl
+  - name: journalctl
+workflow:
+  - step: 找出失败和无关服务
+  - step: 评估是否影响代理节点目标
+  - step: disable 和 stop 无关服务
+constraints:
+  - 不允许把 SSH、网络、时间同步、代理服务本身误停

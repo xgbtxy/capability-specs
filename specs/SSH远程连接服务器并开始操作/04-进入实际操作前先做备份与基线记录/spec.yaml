@@ -1,0 +1,21 @@
+id: backup-before-operating-on-server
+name: 进入实际操作前先做备份与基线记录
+purpose: 在真正改服务或配置前，先备份关键文件并记录当前启用服务和状态。
+inputs:
+  - name: target_files
+    type: string
+    description: 计划改动的关键配置文件列表
+outputs:
+  - name: backup_location
+    type: string
+    description: 最终备份目录
+tools:
+  - name: cp
+  - name: mkdir
+  - name: systemctl
+workflow:
+  - step: 创建时间戳备份目录
+  - step: 复制关键配置文件
+  - step: 导出启用服务或当前状态摘要
+constraints:
+  - 不允许没有回退点就直接改线上配置

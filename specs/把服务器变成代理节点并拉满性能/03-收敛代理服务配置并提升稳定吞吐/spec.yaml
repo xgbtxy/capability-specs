@@ -1,0 +1,21 @@
+id: tune-proxy-service-for-stable-throughput
+name: 收敛代理服务配置并提升稳定吞吐
+purpose: 去掉明显无效或过激的参数，简化 DNS 和网络路径，优先获得稳定吞吐。
+inputs:
+  - name: service_config_path
+    type: string
+    description: 代理服务配置文件路径
+outputs:
+  - name: tuning_summary
+    type: string
+    description: 最终保留和移除的关键参数摘要
+tools:
+  - name: xray
+  - name: systemctl
+workflow:
+  - step: 找出明显绕路和无效参数
+  - step: 去掉激进但收益不明的配置
+  - step: 重载服务并确认配置有效
+constraints:
+  - 不允许把“更猛”误认为“更快”
+  - 不允许改完不做配置测试

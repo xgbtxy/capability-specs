@@ -1,0 +1,23 @@
+id: inspect-server-after-first-login
+name: 第一次登录并确认系统环境
+purpose: 首次登录后先确认操作系统、服务状态、端口监听、资源占用和失败单元。
+inputs:
+  - name: ssh_session_result
+    type: string
+    description: 已成功建立的 SSH 会话
+outputs:
+  - name: system_baseline
+    type: string
+    description: 服务器基线摘要
+tools:
+  - name: uname
+  - name: systemctl
+  - name: ss
+  - name: free
+workflow:
+  - step: 确认系统版本和虚拟化环境
+  - step: 查看关键服务状态
+  - step: 查看监听端口和资源占用
+  - step: 查看失败单元
+constraints:
+  - 不允许没看现状就直接做优化判断

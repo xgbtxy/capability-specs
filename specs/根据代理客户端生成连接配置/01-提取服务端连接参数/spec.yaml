@@ -1,0 +1,20 @@
+id: extract-server-side-proxy-params
+name: 提取服务端连接参数
+purpose: 从服务端配置中提取客户端真正需要的参数。
+inputs:
+  - name: service_config_path
+    type: string
+    description: 服务端配置文件路径
+outputs:
+  - name: server_connection_params
+    type: string
+    description: 整理好的服务端连接参数摘要
+tools:
+  - name: xray
+  - name: text-editor
+workflow:
+  - step: 找到地址、端口、UUID
+  - step: 找到 SNI、公钥和 short-id
+  - step: 整理成客户端可用参数
+constraints:
+  - 不允许凭印象填写参数

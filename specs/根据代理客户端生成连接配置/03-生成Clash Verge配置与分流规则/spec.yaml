@@ -1,0 +1,20 @@
+id: generate-clash-verge-config-and-routing
+name: 生成Clash Verge配置与分流规则
+purpose: 给 Clash Verge 生成可导入的配置，并补上基础分流规则。
+inputs:
+  - name: server_connection_params
+    type: string
+    description: 已整理好的连接参数
+outputs:
+  - name: clash_config
+    type: string
+    description: 生成的 Clash Verge 配置
+tools:
+  - name: mihomo
+  - name: text-editor
+workflow:
+  - step: 生成节点定义
+  - step: 生成代理组
+  - step: 添加基础分流规则
+constraints:
+  - 不允许在保命主配置上直接覆盖测试节点

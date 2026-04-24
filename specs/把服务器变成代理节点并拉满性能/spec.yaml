@@ -1,0 +1,38 @@
+id: turn-server-into-proxy-node-and-maximize-performance
+name: 把服务器变成代理节点并拉满性能
+purpose: 把服务器收敛成单用途代理节点，清理无关服务，优化代理服务配置，并验证端口和节点可用性。
+inputs:
+  - name: proxy_service
+    type: string
+    description: 当前代理服务，例如 xray
+  - name: service_config_path
+    type: string
+    description: 代理服务配置文件路径
+  - name: target_role
+    type: string
+    description: 服务器的唯一目标，例如只当代理节点
+outputs:
+  - name: proxy_runtime_summary
+    type: string
+    description: 代理服务运行摘要
+  - name: disabled_services
+    type: string
+    description: 被停用的无关服务列表
+  - name: port_validation
+    type: string
+    description: 端口可达性和客户端连通性摘要
+tools:
+  - name: xray
+  - name: systemctl
+  - name: ss
+  - name: journalctl
+  - name: iptables
+workflow:
+  - step: 确认代理服务与监听端口
+  - step: 清理无关服务并收敛系统开销
+  - step: 收敛代理服务配置并提升稳定吞吐
+  - step: 排查端口可达性并验证节点可用
+constraints:
+  - 不允许把“参数看起来很猛”当成“真的性能更好”
+  - 不允许只改服务配置不验证端口和客户端
+  - 不允许在没备份前直接动关键服务

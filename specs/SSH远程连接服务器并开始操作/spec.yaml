@@ -1,0 +1,37 @@
+id: ssh-into-server-and-start-operating
+name: SSH远程连接服务器并开始操作
+purpose: 把拿到服务器登录信息后，安全连入、确认环境、开始操作前做基线记录的流程拆成多个可复用小能力。
+inputs:
+  - name: server_address
+    type: string
+    description: 服务器 IP 或域名
+  - name: ssh_port
+    type: number
+    description: SSH 端口，可能不是默认的 22
+  - name: login_identity
+    type: string
+    description: 登录账号和认证方式摘要
+outputs:
+  - name: access_path
+    type: string
+    description: 最终采用的 SSH 连接方式
+  - name: system_baseline
+    type: string
+    description: 登录后的系统、服务、端口和资源摘要
+  - name: backup_location
+    type: string
+    description: 关键配置备份路径
+tools:
+  - name: openssh
+  - name: plink
+  - name: systemctl
+  - name: journalctl
+workflow:
+  - step: 确认连接信息与访问方式
+  - step: 用合适客户端发起 SSH 连接
+  - step: 第一次登录并确认系统环境
+  - step: 进入实际操作前先做备份与基线记录
+constraints:
+  - 不允许地址、端口、认证方式没确认就盲目尝试
+  - 不允许在首次登录后立刻改配置而不做基线记录
+  - 不允许在没备份关键配置前做高风险变更

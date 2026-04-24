@@ -1,0 +1,20 @@
+id: connect-over-ssh-with-right-client
+name: 用合适客户端发起SSH连接
+purpose: 选择并执行最适合当前机器的 SSH 连接方式，真正连到目标服务器。
+inputs:
+  - name: connection_summary
+    type: string
+    description: 已确认的地址、端口、账号和认证方式
+outputs:
+  - name: ssh_session_result
+    type: string
+    description: 是否成功建立 SSH 会话
+tools:
+  - name: ssh
+  - name: plink
+workflow:
+  - step: 确认本机可用客户端
+  - step: 首次连接确认主机指纹
+  - step: 建立 SSH 会话
+constraints:
+  - 不允许跳过主机指纹确认

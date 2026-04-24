@@ -1,0 +1,20 @@
+id: confirm-proxy-service-and-port
+name: 确认代理服务与监听端口
+purpose: 在优化前先确认代理服务进程、配置文件路径和当前监听端口。
+inputs:
+  - name: service_name
+    type: string
+    description: 代理服务名，例如 xray
+outputs:
+  - name: service_summary
+    type: string
+    description: 服务进程、配置路径和监听端口摘要
+tools:
+  - name: systemctl
+  - name: ss
+workflow:
+  - step: 确认服务单元和配置文件
+  - step: 确认当前监听端口
+  - step: 确认当前运行参数
+constraints:
+  - 不允许端口、配置路径都没确认就开始改

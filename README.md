@@ -24,6 +24,9 @@
 
 ## 当前能力
 
+- [specs/SSH远程连接服务器并开始操作](./specs/SSH远程连接服务器并开始操作)
+- [specs/把服务器变成代理节点并拉满性能](./specs/把服务器变成代理节点并拉满性能)
+- [specs/根据代理客户端生成连接配置](./specs/根据代理客户端生成连接配置)
 - [specs/压缩包整理、加密与交付](./specs/压缩包整理、加密与交付)
 - [specs/FFmpeg媒体处理](./specs/FFmpeg媒体处理)
 - [specs/Pandoc文档转换与发布](./specs/Pandoc文档转换与发布)

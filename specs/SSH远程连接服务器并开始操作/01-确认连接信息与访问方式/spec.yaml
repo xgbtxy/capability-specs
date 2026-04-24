@@ -1,0 +1,20 @@
+id: confirm-ssh-connection-details
+name: 确认连接信息与访问方式
+purpose: 在真正登录前，先确认服务器地址、端口、账号和认证方式，并决定采用什么客户端。
+inputs:
+  - name: connection_hint
+    type: string
+    description: 已知的地址、端口、账号或认证线索
+outputs:
+  - name: connection_summary
+    type: string
+    description: 最终确认后的连接信息摘要
+tools:
+  - name: ssh
+  - name: plink
+workflow:
+  - step: 确认服务器地址和 SSH 端口
+  - step: 确认账号和认证方式
+  - step: 选择最合适的 SSH 客户端
+constraints:
+  - 不允许缺少端口信息时默认假设一定是 22

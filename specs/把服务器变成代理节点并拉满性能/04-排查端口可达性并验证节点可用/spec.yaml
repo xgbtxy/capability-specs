@@ -1,0 +1,23 @@
+id: validate-proxy-port-and-client-connectivity
+name: 排查端口可达性并验证节点可用
+purpose: 验证代理端口是否监听、外部是否可达、客户端是否真的能用，并在必要时调整端口。
+inputs:
+  - name: listen_port
+    type: number
+    description: 当前代理监听端口
+outputs:
+  - name: connectivity_result
+    type: string
+    description: 端口可达性和客户端测试摘要
+tools:
+  - name: ss
+  - name: Test-NetConnection
+  - name: systemctl
+workflow:
+  - step: 确认本机监听
+  - step: 从外部做端口连通探测
+  - step: 用客户端实际连一次
+  - step: 必要时调整端口并重新验证
+constraints:
+  - 不允许只凭感觉判断是端口问题
+  - 不允许换端口后不更新客户端

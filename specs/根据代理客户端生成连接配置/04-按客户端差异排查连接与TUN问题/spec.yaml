@@ -1,0 +1,22 @@
+id: troubleshoot-client-differences-and-tun
+name: 按客户端差异排查连接与TUN问题
+purpose: 当同一节点在不同客户端表现不一致时，单独排查客户端内核、TUN、权限和 MTU 等差异。
+inputs:
+  - name: client_behavior
+    type: string
+    description: 各客户端的表现摘要，例如手机可用、Windows TUN 超时
+outputs:
+  - name: troubleshooting_summary
+    type: string
+    description: 最终排查结论
+tools:
+  - name: clash-verge
+  - name: mihomo
+  - name: windows-network
+workflow:
+  - step: 先确认是不是客户端差异
+  - step: 单独看 TUN、权限、MTU 和栈
+  - step: 用独立测试配置验证修复方向
+constraints:
+  - 不允许把客户端差异误判成服务端一定有问题
+  - 不允许直接覆盖当前可用主配置

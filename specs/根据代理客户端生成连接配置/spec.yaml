@@ -1,0 +1,30 @@
+id: generate-configs-for-different-proxy-clients
+name: 根据代理客户端生成连接配置
+purpose: 从服务端真实参数出发，给 v2ray/Xray、Clash Verge 等不同客户端生成对应配置，并处理客户端差异。
+inputs:
+  - name: server_connection_params
+    type: string
+    description: 地址、端口、UUID、公钥、SNI、short-id 等
+  - name: client_type
+    type: string
+    description: 目标客户端，例如 v2rayN、Xray、Clash Verge
+outputs:
+  - name: client_config
+    type: string
+    description: 最终生成的客户端配置内容
+  - name: troubleshooting_summary
+    type: string
+    description: 不同客户端差异和排查结论
+tools:
+  - name: xray
+  - name: mihomo
+  - name: text-editor
+workflow:
+  - step: 提取服务端连接参数
+  - step: 生成 v2ray 或 Xray 客户端配置
+  - step: 生成 Clash Verge 配置与分流规则
+  - step: 按客户端差异排查连接与 TUN 问题
+constraints:
+  - 不允许混用旧端口和新端口
+  - 不允许在没确认客户端内核支持前盲目套模板
+  - 不允许把手机可用直接等同于桌面端 TUN 必然可用
