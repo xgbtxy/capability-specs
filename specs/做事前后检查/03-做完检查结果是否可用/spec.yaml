@@ -1,0 +1,29 @@
+id: verify-result-is-actually-usable
+name: 做完检查结果是否可用
+purpose: 帮执行者在主流程完成后，验证产物是否真正可用，而不是只检查命令有没有报错。
+inputs:
+  - name: result_object
+    type: path_or_text
+    description: 当前结果对象，例如文件、镜像、PPT、输出文本
+  - name: expected_behavior
+    type: string
+    description: 预期结果行为
+outputs:
+  - name: usability_state
+    type: string
+    description: 当前结果是否可用
+  - name: validation_summary
+    type: string
+    description: 最小验证结果
+  - name: manual_review_points
+    type: list
+    description: 仍需人工确认的点
+tools:
+  - name: powershell
+workflow:
+  - step: 检查结果对象是否存在
+  - step: 检查结果对象能否被正常读取或打开
+  - step: 检查结果是否符合最小预期
+  - step: 输出可用性结论
+constraints:
+  - 不允许把命令执行成功等同于结果可用

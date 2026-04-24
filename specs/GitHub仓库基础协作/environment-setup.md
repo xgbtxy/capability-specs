@@ -1,76 +1,53 @@
-# environment-setup
+# Environment Setup
 
-## 目标
+这个能力要解决的是：把 GitHub 仓库日常协作跑起来。
 
-让不熟悉 Git / GitHub 的执行者具备完成日常 PR 协作所需的最小环境。
+## 1. 必要工具
 
----
+- Git
+- 能访问 GitHub 的账号或凭据
 
-## 1. 必要软件
+## 2. 官方安装入口
 
-### 1.1 Git
+- Git: [https://git-scm.com/downloads](https://git-scm.com/downloads)
+- GitHub CLI: [https://cli.github.com/](https://cli.github.com/)
+- PowerShell: [https://learn.microsoft.com/powershell](https://learn.microsoft.com/powershell)
 
-要求：
+## 3. 安装方法
 
-- 本机已安装 Git
-- 支持基础命令：`status`、`switch`、`add`、`commit`、`push`、`pull`
+### Git
 
-建议版本：
+- Windows：
+  直接安装官方 Git for Windows，按默认选项即可。
+- Linux：
+  Debian / Ubuntu: `sudo apt-get update && sudo apt-get install -y git`
+- macOS：
+  `brew install git`
 
-- Git for Windows 最新稳定版
+### GitHub CLI（推荐）
 
-验证方式：
+- Windows：
+  `winget install --id GitHub.cli`
+- Linux：
+  参考官方仓库安装说明：[https://github.com/cli/cli#installation](https://github.com/cli/cli#installation)
+- macOS：
+  `brew install gh`
 
-```powershell
-git --version
-git status
-```
+## 4. 安装后检查
 
----
+- `git --version`
+- `git remote -v`
+- `gh --version`
+- `gh auth status`
 
-### 1.2 GitHub 访问能力
+## 5. 和这个能力的关系
 
-满足以下任一条件即可：
+- 必须依赖：Git、可用的 GitHub 访问权限
+- 可选依赖：GitHub CLI、PowerShell 7+
 
-- 本机 `git push` 到目标仓库正常
-- 已安装并登录 `gh`
-- 已配置可用的 GitHub 连接器 / API 凭据
+## 6. 常见问题
 
-验证方式：
-
-```powershell
-git remote -v
-git push --dry-run
-```
-
----
-
-## 2. 推荐但非必须的软件
-
-- GitHub CLI（`gh`）
-- PowerShell 7+
-
-这些工具可以提升体验，但本场景不强制依赖它们。
-
----
-
-## 3. 仓库前提
-
-目标仓库建议满足：
-
-- 本地已有 checkout
-- 远端仓库存在
-- 当前执行者具备读取仓库权限
-- 若需要上传和发 PR，还需具备 push / PR 权限
-
----
-
-## 4. 开始前检查
-
-在执行能力前，建议先确认：
-
-- [ ] 知道本地仓库路径
-- [ ] 知道团队让你工作的分支名
-- [ ] 知道 PR 要合并到哪个分支
-- [ ] 本机能够访问 GitHub
-- [ ] 当前仓库没有自己不认识的危险改动
+- 问题：`git push` 失败
+  排查：先看远端地址、当前账号权限、网络是否能访问 GitHub
+- 问题：`gh auth status` 失败
+  排查：执行 `gh auth login` 重新登录

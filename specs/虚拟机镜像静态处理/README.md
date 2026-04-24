@@ -2,6 +2,35 @@
 
 把“已经拿到虚拟机镜像文件后，如何识别镜像、离线提取文件、转换格式，并在必要时恢复 Linux 登录访问”的链路拆成可复用的小能力。
 
+## 解决什么问题
+
+- 拿到镜像后先识别它到底是什么格式
+- 从离线镜像中提取文件或目录
+- 把镜像转换成更适合后续处理的格式
+- 在 Linux 镜像上离线恢复登录访问
+
+## 推荐工具
+
+- QEMU / qemu-img：
+  适合识别和转换镜像格式
+  官方链接：[QEMU 文档](https://www.qemu.org/documentation/) / [qemu-img 文档](https://www.qemu.org/docs/master/tools/qemu-img.html)
+- libguestfs：
+  适合离线访问和修改虚拟机磁盘镜像
+  官方链接：[官网](https://www.libguestfs.org/)
+- guestfish：
+  适合脚本化读取与修改镜像文件系统
+  官方链接：[guestfish 文档](https://libguestfs.org/guestfish.1.html)
+- guestmount：
+  适合把镜像以只读方式挂到主机上导文件
+  官方链接：[guestmount 文档](https://libguestfs.org/guestmount.1.html)
+
+## 最小使用方式
+
+1. 先识别镜像是容器、描述文件还是实际磁盘
+2. 决定是直接提文件还是先转换格式
+3. 用只读方式挂载并提取所需内容
+4. 必要时再进入 Linux 离线恢复访问
+
 ## 场景索引
 
 - [`spec.yaml`](./spec.yaml)

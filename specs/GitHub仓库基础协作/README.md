@@ -2,6 +2,31 @@
 
 把“看懂一个 GitHub 仓库、在本地增删改查、提交推送、发起 PR、处理反馈直到合并前”的整条协作链路拆成可复用的小能力。
 
+## 解决什么问题
+
+- 看懂仓库当前状态，不在错误分支上工作
+- 把本地改动提交、推送并发起 PR
+- 收到反馈后继续在同一个 PR 上修订，直到闭环
+
+## 推荐工具
+
+- Git：
+  处理本地仓库、分支、提交和推送
+  官方链接：[下载](https://git-scm.com/downloads.html)
+- GitHub CLI：
+  适合命令行里处理 PR、Issue 和认证
+  官方链接：[官网](https://cli.github.com/) / [安装与快速开始](https://docs.github.com/en/free-pro-team%40latest/github-cli/github-cli/quickstart)
+- GitHub REST API：
+  适合自动化创建 PR、读写仓库数据
+  官方链接：[REST API 文档](https://docs.github.com/en/rest) / [入门](https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api?tool=javascript)
+
+## 最小使用方式
+
+1. 先用 Git 看清仓库状态和当前分支
+2. 在正确分支上修改并提交
+3. 推送到远端并创建或更新 PR
+4. 读反馈、继续修订、直到闭环
+
 ## 场景索引
 
 - [`spec.yaml`](./spec.yaml)

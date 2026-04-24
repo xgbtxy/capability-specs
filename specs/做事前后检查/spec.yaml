@@ -1,0 +1,34 @@
+id: task-pre-and-post-checks
+name: 做事前后检查
+purpose: 把开始前环境检查、任务范围判断、结果可用性验证和失败排查回退拆成多个可复用小能力。
+inputs:
+  - name: task_description
+    type: text
+    description: 当前任务说明
+  - name: input_objects
+    type: list_or_path
+    description: 当前任务涉及的输入对象，例如文件、目录、仓库、镜像
+outputs:
+  - name: readiness_summary
+    type: string
+    description: 当前是否具备开始条件
+  - name: scope_summary
+    type: string
+    description: 当前任务范围摘要
+  - name: validation_summary
+    type: string
+    description: 当前结果是否可用
+  - name: fallback_summary
+    type: string
+    description: 失败时的排查和回退建议
+tools:
+  - name: powershell
+workflow:
+  - step: 开始前检查环境与前置条件
+  - step: 判断任务范围与处理模式
+  - step: 做完检查结果是否可用
+  - step: 失败时排查问题与回退
+constraints:
+  - 不允许把检查步骤写成可有可无的备注
+  - 不允许只以“命令成功执行”替代结果可用性验证
+  - 不允许失败后没有最小排查和回退路径

@@ -2,6 +2,28 @@
 
 把“根据输入材料生成一份可汇报的 PPT，或在现有 PPT 上继续迭代某一部分内容”的链路拆成可复用的小能力。
 
+## 解决什么问题
+
+- 根据文档、提纲、笔记生成整份 PPT
+- 在已有 PPT 上补几页、改一章、调局部版式
+- 输出真正可继续编辑的 `.pptx`
+
+## 推荐工具
+
+- Node.js：
+  适合运行 PPT 生成脚本
+  官方链接：[下载与安装](https://nodejs.org/en/download/package-manager) / [文档](https://nodejs.org/en/docs/)
+- PptxGenJS：
+  适合生成真正可编辑的 `.pptx`
+  官方链接：[介绍](https://gitbrent.github.io/PptxGenJS/docs/introduction/) / [快速开始](https://gitbrent.github.io/PptxGenJS/docs/quick-start/)
+
+## 最小使用方式
+
+1. 先判断这次是整份新建还是局部迭代
+2. 把输入材料整理成页面结构
+3. 用 PptxGenJS 生成初稿或增量页面
+4. 导出并检查最终 `.pptx` 是否可交付
+
 ## 场景索引
 
 - [`spec.yaml`](./spec.yaml)

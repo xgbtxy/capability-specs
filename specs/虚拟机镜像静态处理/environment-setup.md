@@ -1,89 +1,57 @@
-# environment-setup
+# Environment Setup
 
-## 目标
+这个能力要解决的是：识别离线镜像、提取文件、转换格式、恢复 Linux 访问。
 
-让执行者具备处理静态虚拟机镜像所需的最小命令行环境。
+## 1. 必要工具
 
----
+- QEMU 工具组（至少有 `qemu-img`）
+- libguestfs 工具组（至少有 `guestfish`、`guestmount`）
 
-## 1. 必要软件
+## 2. 官方安装入口
 
-### 1.1 qemu-img
+- QEMU: [https://www.qemu.org/download/](https://www.qemu.org/download/)
+- qemu-img 文档: [https://www.qemu.org/docs/master/tools/qemu-img.html](https://www.qemu.org/docs/master/tools/qemu-img.html)
+- libguestfs: [https://libguestfs.org/](https://libguestfs.org/)
+- guestfish: [https://libguestfs.org/guestfish.1.html](https://libguestfs.org/guestfish.1.html)
+- guestmount: [https://libguestfs.org/guestmount.1.html](https://libguestfs.org/guestmount.1.html)
 
-用途：
+## 3. 安装方法
 
-- 识别镜像基本信息
-- 转换镜像格式
+### QEMU
 
-建议验证：
+- Windows：
+  建议安装官方或可信发行版后，确认 `qemu-img.exe` 已加入 PATH。
+- Linux：
+  Debian / Ubuntu: `sudo apt-get update && sudo apt-get install -y qemu-utils`
+- macOS：
+  `brew install qemu`
 
-```powershell
-qemu-img --version
-qemu-img info <image>
-```
+### libguestfs
 
----
+- Windows：
+  不建议作为主环境，优先在 Linux 虚机、WSL2 或真实 Linux 上执行。
+- Linux：
+  Debian / Ubuntu: `sudo apt-get update && sudo apt-get install -y libguestfs-tools`
+- macOS：
+  优先改用 Linux 环境；如果必须本机处理，先确认 Homebrew 方案是否满足你的镜像格式需求。
 
-### 1.2 libguestfs 工具组
+## 4. 安装后检查
 
-推荐至少具备：
+- `qemu-img --version`
+- `qemu-img info <image>`
+- `guestfish --version`
+- `guestmount --version`
 
-- `guestfish`
-- `guestmount`
+## 5. 和这个能力的关系
 
-用途：
+- 必须依赖：`qemu-img`、`guestfish` / `guestmount`
+- 可选依赖：`qemu-nbd`、`7z`
 
-- 挂载镜像文件系统
-- 提取指定文件
-- 在离线状态下修改 Linux 系统文件
+## 6. 常见问题
 
-建议验证：
-
-```powershell
-guestfish --version
-guestmount --version
-```
-
----
-
-### 1.3 可选辅助工具
-
-- `qemu-nbd`
-- `7z` 或其他归档工具
-
-用途：
-
-- 将镜像暴露为块设备
-- 提取 `ova`、压缩包或其他容器里的真实磁盘文件
-
----
-
-## 2. 访问前提
-
-执行前建议确认：
-
-- 已拿到镜像文件或虚拟机目录
-- 有足够磁盘空间保存导出文件和转换后的镜像
-- 当前用户具备访问镜像文件的权限
-
----
-
-## 3. 当前建议支持范围
-
-优先支持：
-
-- `ova`
-- `ovf`
-- `vmdk`
-- `qcow2`
-- `raw`
-- `vhdx`
-
----
-
-## 4. 开始前检查
-
-- [ ] 知道当前拿到的是单文件还是一整目录
-- [ ] 知道本次目标是提文件、转格式，还是恢复访问
-- [ ] 确认镜像文件可读
-- [ ] 确认有输出目录可保存提取结果或转换结果
+- 问题：`qemu-img info` 读不到镜像
+  排查：先确认路径、权限、镜像是否损坏
+- 问题：`guestmount` 挂载失败
+  排查：先用 `guestfish -i <image>` 看分区是否能识别
+- 问题：Windows 环境下工具不全
+  排查：优先切到 Linux 或 WSL2 环境执行

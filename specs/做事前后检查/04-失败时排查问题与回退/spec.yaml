@@ -1,0 +1,30 @@
+id: troubleshoot-failures-and-rollback
+name: 失败时排查问题与回退
+purpose: 帮执行者在任务失败或结果不可用时，定位失败点并给出最小回退路径。
+inputs:
+  - name: failure_symptom
+    type: text
+    description: 当前失败现象
+  - name: recent_actions
+    type: list
+    description: 最近执行过的动作
+outputs:
+  - name: suspected_causes
+    type: list
+    description: 可能原因
+  - name: troubleshooting_steps
+    type: list
+    description: 排查顺序
+  - name: rollback_plan
+    type: string
+    description: 最小回退建议
+tools:
+  - name: powershell
+workflow:
+  - step: 记录失败现象和最近动作
+  - step: 列出最可能原因
+  - step: 设计排查顺序
+  - step: 在必要时给出最小回退路径
+constraints:
+  - 不允许失败后只给模糊建议
+  - 不允许在不知道当前状态时盲目回退

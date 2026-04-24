@@ -1,0 +1,28 @@
+id: determine-task-scope-and-handling-mode
+name: 判断任务范围与处理模式
+purpose: 帮执行者在开始主流程前判断当前任务的处理范围和模式，避免扩大或偏离目标。
+inputs:
+  - name: task_description
+    type: text
+    description: 当前任务说明
+  - name: input_objects
+    type: list_or_path
+    description: 输入对象
+outputs:
+  - name: scope_summary
+    type: string
+    description: 当前任务范围摘要
+  - name: handling_mode
+    type: string
+    description: 当前处理模式
+  - name: out_of_scope
+    type: list
+    description: 当前不应处理的边界
+tools:
+  - name: powershell
+workflow:
+  - step: 判断本次任务是整份、局部、单对象还是多对象
+  - step: 判断本次任务是新建、修改、导出、转换还是排障
+  - step: 明确不在当前范围内的内容
+constraints:
+  - 不允许在范围不清时默认扩大处理

@@ -1,0 +1,26 @@
+id: check-environment-and-prerequisites-before-starting
+name: 开始前检查环境与前置条件
+purpose: 帮执行者在开始主流程前确认环境、输入对象、权限和基本前提是否满足。
+inputs:
+  - name: task_description
+    type: text
+    description: 当前任务说明
+  - name: input_objects
+    type: list_or_path
+    description: 当前任务依赖的输入对象
+outputs:
+  - name: readiness_state
+    type: string
+    description: 当前是否满足开始条件
+  - name: blockers
+    type: list
+    description: 当前阻塞点
+tools:
+  - name: powershell
+workflow:
+  - step: 检查输入对象是否存在
+  - step: 检查工具和权限是否满足
+  - step: 检查输出路径和必要前提
+  - step: 给出是否可以开始的结论
+constraints:
+  - 不允许在前提不满足时假装可以继续

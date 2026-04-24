@@ -1,72 +1,54 @@
-# environment-setup
+# Environment Setup
 
-## 目标
+这个能力要解决的是：把输入材料生成或更新成真正可编辑的 `.pptx`。
 
-让执行者具备生成和迭代 `.pptx` 文件所需的最小命令行环境。
+## 1. 必要工具
 
----
+- Node.js
+- npm
+- PptxGenJS
 
-## 1. 必要软件
+## 2. 官方安装入口
 
-### 1.1 Node.js
+- Node.js: [https://nodejs.org/](https://nodejs.org/)
+- Node.js 安装说明: [https://nodejs.org/en/download](https://nodejs.org/en/download)
+- PptxGenJS 文档: [https://gitbrent.github.io/PptxGenJS/docs/introduction/](https://gitbrent.github.io/PptxGenJS/docs/introduction/)
+- PptxGenJS npm: [https://www.npmjs.com/package/pptxgenjs](https://www.npmjs.com/package/pptxgenjs)
 
-用途：
+## 3. 安装方法
 
-- 运行 PPT 生成脚本
-- 使用 `PptxGenJS` 输出正式 `.pptx`
+### Node.js
 
-建议验证：
+- Windows：
+  安装官方 LTS 版本即可。
+- Linux：
+  可参考官方安装页，或在 Debian / Ubuntu 上使用系统包管理器安装 `nodejs` 和 `npm`。
+- macOS：
+  `brew install node`
 
-```powershell
-node --version
-npm --version
-```
+### PptxGenJS
 
----
+- 新建一个脚本目录后执行：
+  `npm init -y`
+- 安装：
+  `npm install pptxgenjs`
 
-### 1.2 PptxGenJS
+## 4. 安装后检查
 
-用途：
+- `node --version`
+- `npm --version`
+- `npm list pptxgenjs`
 
-- 生成真正可编辑的 `.pptx`
-- 控制页面布局、文本、图片、图表、母版样式
+## 5. 和这个能力的关系
 
-建议验证：
+- 必须依赖：Node.js、npm、PptxGenJS
+- 可选依赖：Markdown 解析脚本、图表脚本、图片处理工具
 
-```powershell
-npm list pptxgenjs
-```
+## 6. 常见问题
 
-若当前项目未安装，可在项目外或专用脚本目录中准备。
-
----
-
-## 2. 可选辅助工具
-
-- Markdown 解析脚本
-- 图表生成脚本
-- 图片压缩或裁剪工具
-
-用途：
-
-- 帮助把原始材料整理成页面级结构
-- 统一图表和图片资源
-
----
-
-## 3. 输入前提
-
-执行前建议确认：
-
-- 已明确这次是新建整份，还是只改一部分
-- 已有原始材料，或至少有一版大纲
-- 如果是迭代已有 PPT，已拿到原文件或页面结构说明
-
----
-
-## 4. 开始前检查
-
-- [ ] 知道本次是新建还是续写
-- [ ] 知道输入材料是什么格式
-- [ ] 知道输出目标是 `.pptx`
-- [ ] 如果有品牌模板，已明确字体、配色、封面和内容页样式要求
+- 问题：`node` 或 `npm` 不可用
+  排查：重新打开终端，确认 PATH 已更新
+- 问题：`npm list pptxgenjs` 看不到包
+  排查：先确认当前目录是不是安装过依赖的脚本目录
+- 问题：PPT 能生成但版式不好
+  排查：先缩小到最小样例，确认模板、字体、页面尺寸是否写对
