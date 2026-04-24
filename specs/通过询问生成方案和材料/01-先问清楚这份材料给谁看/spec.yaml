@@ -1,0 +1,19 @@
+id: ask-who-the-material-is-for
+name: 先问清楚这份材料给谁看
+purpose: 在开始写之前，先确认这份材料的读者对象和使用场景。
+inputs:
+  - name: topic_hint
+    type: string
+    description: 已知主题或材料方向
+outputs:
+  - name: audience_summary
+    type: string
+    description: 材料受众和使用场景摘要
+tools:
+  - name: llm-dialog
+workflow:
+  - step: 确认材料给谁看
+  - step: 确认这份材料要在哪种场景被使用
+  - step: 确认要正式、技术、汇报还是宣传口径
+constraints:
+  - 不允许读者对象没确认就直接开写

@@ -1,0 +1,19 @@
+id: ask-current-state-goals-and-constraints
+name: 先问清楚现状目标和约束
+purpose: 在成文前先把现状、目标和约束收集完整。
+inputs:
+  - name: core_problem
+    type: string
+    description: 已确认的核心问题
+outputs:
+  - name: situation_summary
+    type: string
+    description: 现状、目标和约束摘要
+tools:
+  - name: llm-dialog
+workflow:
+  - step: 问清楚当前现状
+  - step: 问清楚最终目标
+  - step: 问清楚资源、周期和约束
+constraints:
+  - 不允许跳过现状和约束，只写理想目标

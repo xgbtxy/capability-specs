@@ -1,0 +1,34 @@
+id: generate-proposals-and-materials-through-questioning
+name: 通过询问生成方案和材料
+purpose: 先通过提问收集关键信息，再生成方案、汇报稿、研究材料或正式初稿。
+inputs:
+  - name: material_goal
+    type: string
+    description: 这份材料大概要做什么，例如方案、研究稿、汇报稿、申报材料
+  - name: topic_hint
+    type: string
+    description: 已知主题，例如现网安全防护、6G 安全、量子安全、低空经济安全
+outputs:
+  - name: collected_information
+    type: string
+    description: 通过询问整理出的关键信息摘要
+  - name: draft_structure
+    type: string
+    description: 整理后的材料结构
+  - name: material_draft
+    type: string
+    description: 最终生成的初稿
+tools:
+  - name: llm-dialog
+  - name: markdown
+workflow:
+  - step: 先问清楚这份材料给谁看
+  - step: 先问清楚要解决什么问题
+  - step: 先问清楚现状目标和约束
+  - step: 先问清楚亮点风险和落地路径
+  - step: 把收集到的信息整理成方案结构
+  - step: 按不同场景生成正式材料初稿
+constraints:
+  - 不允许信息没问清楚就直接生成长篇材料
+  - 不允许把提问流程写成僵硬模板
+  - 不允许只给空结构，不真正生成可用初稿

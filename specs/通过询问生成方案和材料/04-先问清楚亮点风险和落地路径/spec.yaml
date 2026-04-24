@@ -1,0 +1,19 @@
+id: ask-highlights-risks-and-implementation-path
+name: 先问清楚亮点风险和落地路径
+purpose: 把材料里最容易打动人、也最容易被质疑的部分提前问出来。
+inputs:
+  - name: situation_summary
+    type: string
+    description: 已整理的现状目标约束
+outputs:
+  - name: highlight_and_risk_summary
+    type: string
+    description: 亮点、风险和落地路径摘要
+tools:
+  - name: llm-dialog
+workflow:
+  - step: 问亮点
+  - step: 问风险
+  - step: 问落地路径和分阶段动作
+constraints:
+  - 不允许只写亮点不写风险

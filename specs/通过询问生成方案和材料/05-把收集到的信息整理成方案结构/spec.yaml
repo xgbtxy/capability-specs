@@ -1,0 +1,20 @@
+id: turn-collected-information-into-structure
+name: 把收集到的信息整理成方案结构
+purpose: 把已收集的信息整理成适合成文的结构，而不是零散问答。
+inputs:
+  - name: collected_information
+    type: string
+    description: 已经收集好的问题和答案
+outputs:
+  - name: draft_structure
+    type: string
+    description: 材料结构和章节摘要
+tools:
+  - name: llm-dialog
+  - name: markdown
+workflow:
+  - step: 整理主题线
+  - step: 生成章节结构
+  - step: 给每一部分分配要点
+constraints:
+  - 不允许把零散问答直接当成最终材料

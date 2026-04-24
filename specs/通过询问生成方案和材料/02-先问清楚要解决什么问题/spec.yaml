@@ -1,0 +1,19 @@
+id: ask-what-problem-needs-to-be-solved
+name: 先问清楚要解决什么问题
+purpose: 先确认这份材料最核心要回答的问题，而不是一上来堆内容。
+inputs:
+  - name: audience_summary
+    type: string
+    description: 已确认的读者和场景
+outputs:
+  - name: core_problem
+    type: string
+    description: 这份材料最核心要解决的问题
+tools:
+  - name: llm-dialog
+workflow:
+  - step: 确认这份材料的核心问题
+  - step: 确认最想说服或解释的点
+  - step: 删掉和核心问题无关的内容方向
+constraints:
+  - 不允许问题没收束就直接铺内容

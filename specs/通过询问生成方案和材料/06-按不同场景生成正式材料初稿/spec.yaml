@@ -1,0 +1,23 @@
+id: generate-formal-draft-for-different-scenarios
+name: 按不同场景生成正式材料初稿
+purpose: 在信息和结构都准备好后，输出可直接继续改的正式材料初稿。
+inputs:
+  - name: draft_structure
+    type: string
+    description: 已整理好的结构
+  - name: audience_summary
+    type: string
+    description: 读者和场景摘要
+outputs:
+  - name: material_draft
+    type: string
+    description: 最终生成的正式初稿
+tools:
+  - name: llm-dialog
+  - name: markdown
+workflow:
+  - step: 确认文风和深度
+  - step: 生成完整初稿
+  - step: 检查是否真的围绕前面的问题展开
+constraints:
+  - 不允许跳过前面的提问流程直接硬写
