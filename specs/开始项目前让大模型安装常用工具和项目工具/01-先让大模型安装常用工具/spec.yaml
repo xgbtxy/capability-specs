@@ -1,0 +1,19 @@
+id: let-model-install-familiar-tools-first
+name: 先让大模型安装常用工具
+purpose: 在开工前先让大模型按自己原生常用命令判断本机是否缺少它常用的工具。
+inputs:
+  - name: local_environment
+    type: string
+    description: 当前本机环境
+outputs:
+  - name: familiar_tool_summary
+    type: string
+    description: 当前已有和缺失的大模型常用工具摘要
+tools:
+  - name: powershell
+workflow:
+  - step: 按大模型常用命令检查终端和基础工具
+  - step: 判断哪些常用工具缺失
+  - step: 记录现状并先补最常用的
+constraints:
+  - 不允许跳过大模型常用工具检查
