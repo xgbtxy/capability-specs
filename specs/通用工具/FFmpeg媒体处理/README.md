@@ -1,20 +1,7 @@
 # FFmpeg媒体处理
 
-把“识别媒体、转换压缩、裁剪提取、批量处理并验证输出”拆成可复用的小能力。
-
-## 推荐工具
-
-- FFmpeg
-  官方链接：[Documentation](https://ffmpeg.org/ffmpeg-doc.html)
-- FFprobe
-  官方链接：[ffprobe Documentation](https://ffmpeg.org/ffprobe.html)
-
-## 最小使用方式
-
-1. 先看清媒体文件是什么、要处理成什么
-2. 用 FFmpeg 做转换、压缩、裁剪或提取
-3. 用 FFprobe 或播放器验证输出
-4. 需要批量处理时再统一脚本化
+- 解决：转换、压缩、裁剪媒体文件，提取音频、字幕和帧。
+- 工具：FFmpeg、FFprobe。
 
 ## 包含的能力
 

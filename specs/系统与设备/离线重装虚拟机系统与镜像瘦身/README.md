@@ -1,24 +1,7 @@
 # 离线重装虚拟机系统与镜像瘦身
 
-把“离线重建干净系统盘、清理历史痕迹、再把镜像重新瘦身”拆成可复用的小能力。
-
-## 推荐工具
-
-- virt-sysprep
-  官方链接：[virt-sysprep](https://libguestfs.org/virt-sysprep.1.html)
-- virt-sparsify
-  官方链接：[virt-sparsify](https://libguestfs.org/virt-sparsify.1.html)
-- qemu-img
-  官方链接：[qemu-img](https://www.qemu.org/docs/master/tools/qemu-img.html)
-- guestfish
-  官方链接：[guestfish](https://libguestfs.org/guestfish.1.html)
-
-## 最小使用方式
-
-1. 先确认原镜像、目标系统和输出镜像
-2. 离线重建干净系统盘
-3. 离线清理无用数据和历史痕迹
-4. 离线稀疏化镜像并验证体积变化
+- 解决：离线重建系统盘，清理痕迹，再把镜像变小。
+- 工具：virt-sysprep、virt-sparsify、qemu-img、guestfish。
 
 ## 包含的能力
 

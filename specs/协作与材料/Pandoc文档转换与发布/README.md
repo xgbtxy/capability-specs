@@ -1,20 +1,7 @@
 # Pandoc文档转换与发布
 
-把“识别文档格式、完成转换、套模板样式、导出并检查结果”拆成可复用的小能力。
-
-## 推荐工具
-
-- Pandoc
-  官方链接：[Pandoc User’s Guide](https://pandoc.org/MANUAL.html)
-- Pandoc Filters
-  官方链接：[Filters](https://pandoc.org/filters.html)
-
-## 最小使用方式
-
-1. 先确认输入和输出格式
-2. 用 Pandoc 做基础转换
-3. 有样式要求时再套模板或 filter
-4. 导出后检查最终文件是否可交付
+- 解决：转换文档格式，套模板，导出最终文件。
+- 工具：Pandoc、Pandoc Filters。
 
 ## 包含的能力
 
