@@ -15,13 +15,15 @@
 
 ## 唯一硬要求
 
-每个能力必须有一份 [environment-setup.md](./templates/environment-setup.md)。
+每个能力必须有一份 `environment-setup.md`。
 
 这份文件只做一件事：
 
 - 写清楚这个能力需要什么环境
 - 给官方安装方法
 - 给最小检查方式
+
+如果你以后要继续维护这个仓库，可以先看 [templates/维护这个仓库的Prompt.md](./templates/维护这个仓库的Prompt.md)。
 
 ## 当前能力
 
