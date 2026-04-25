@@ -1,0 +1,3 @@
+id: docker-confirm-build-targets
+name: 确认目标平台和构建方式
+purpose: 先确认目标平台、语言、依赖方式和最终产物要求。

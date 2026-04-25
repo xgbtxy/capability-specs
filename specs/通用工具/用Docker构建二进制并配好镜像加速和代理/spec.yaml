@@ -1,0 +1,37 @@
+id: docker-build-binaries-with-acceleration-and-proxy
+name: 用Docker构建二进制并配好镜像加速和代理
+purpose: 把 Docker 构建环境、交叉编译、静态编译、镜像加速和代理配置拆成一条可复用链路。
+inputs:
+  - name: project_source
+    type: path_or_repo
+    description: 项目源码目录或仓库
+  - name: target_platforms
+    type: string_or_list
+    description: 目标平台，例如 linux/amd64、linux/arm64、windows/amd64
+  - name: build_goal
+    type: string
+    description: 目标是交叉编译、静态编译，还是两者都要
+outputs:
+  - name: build_plan
+    type: string
+    description: 这次该怎么构建的判断结果
+  - name: built_binaries
+    type: path_or_list
+    description: 输出二进制文件或镜像
+  - name: runtime_notes
+    type: string
+    description: 构建、加速、代理是否可用
+tools:
+  - name: docker
+  - name: docker buildx
+  - name: powershell_or_bash
+workflow:
+  - step: 确认目标平台和构建方式
+  - step: 用 Docker 做交叉编译
+  - step: 用 Docker 做静态编译
+  - step: 配置 Docker 镜像加速和国外代理
+  - step: 验证产物和拉取构建速度
+constraints:
+  - 不允许在没看清目标平台前就盲目构建
+  - 不允许把镜像加速和国外代理混成一套不清楚的配置
+  - 不允许只看构建成功，不验证产物架构和可执行性

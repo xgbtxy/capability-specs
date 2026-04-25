@@ -1,0 +1,3 @@
+id: docker-cross-compile-binaries
+name: 用Docker做交叉编译
+purpose: 用 Docker 和 Buildx 在稳定环境里构建多平台二进制。

@@ -1,0 +1,3 @@
+id: docker-verify-binaries-and-pull-speed
+name: 验证产物和拉取构建速度
+purpose: 验证镜像拉取、构建速度和二进制产物是否真的可交付。

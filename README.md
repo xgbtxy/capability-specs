@@ -54,6 +54,7 @@
 ### 通用工具
 
 - [specs/通用工具/压缩包整理、加密与交付](./specs/通用工具/压缩包整理、加密与交付)
+- [specs/通用工具/用Docker构建二进制并配好镜像加速和代理](./specs/通用工具/用Docker构建二进制并配好镜像加速和代理)
 - [specs/通用工具/FFmpeg媒体处理](./specs/通用工具/FFmpeg媒体处理)
 - [specs/通用工具/jq处理JSON数据](./specs/通用工具/jq处理JSON数据)
 - [specs/通用工具/Playwright浏览器自动化](./specs/通用工具/Playwright浏览器自动化)

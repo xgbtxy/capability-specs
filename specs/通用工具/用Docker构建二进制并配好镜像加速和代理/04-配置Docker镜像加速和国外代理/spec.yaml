@@ -1,0 +1,3 @@
+id: docker-configure-mirror-and-proxy
+name: 配置Docker镜像加速和国外代理
+purpose: 把 Docker 的镜像加速和 daemon 代理分清楚、配清楚、验证清楚。
