@@ -7,6 +7,11 @@
 
 真正喂给 AI 的内容，放到下面的 spec 文件里。
 
+默认环境：
+
+- Windows
+- PowerShell
+
 默认思路：
 
 - 先让 AI 调成熟工具
