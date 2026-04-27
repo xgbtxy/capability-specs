@@ -1,0 +1,3 @@
+id: duckdb-identify-capture-files-and-goal
+name: 确认抓包结果文件和分析目标
+purpose: 在建查询前先确认抓包结果文件结构和分析目标。

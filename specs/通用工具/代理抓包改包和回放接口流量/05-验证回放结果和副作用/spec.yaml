@@ -1,0 +1,3 @@
+id: mitmproxy-validate-replay-effects
+name: 验证回放结果和副作用
+purpose: 验证回放是否成功、是否产生副作用以及下一步该看什么。

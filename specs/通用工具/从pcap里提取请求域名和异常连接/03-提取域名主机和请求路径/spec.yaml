@@ -1,0 +1,3 @@
+id: tshark-extract-hosts-and-paths
+name: 提取域名主机和请求路径
+purpose: 提取 HTTP host/path、TLS SNI、DNS 查询等关键主机信息。

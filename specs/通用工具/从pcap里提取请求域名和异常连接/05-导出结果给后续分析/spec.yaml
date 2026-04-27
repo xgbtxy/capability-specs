@@ -1,0 +1,3 @@
+id: tshark-export-results
+name: 导出结果给后续分析
+purpose: 把 tshark 提取结果导出成文本或 CSV，交给下一步工具继续分析。

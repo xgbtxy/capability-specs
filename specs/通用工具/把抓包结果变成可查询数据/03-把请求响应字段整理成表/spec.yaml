@@ -1,0 +1,3 @@
+id: duckdb-normalize-request-response-fields
+name: 把请求响应字段整理成表
+purpose: 把请求、响应、域名、路径、状态码、参数等字段整理成适合查询的表。

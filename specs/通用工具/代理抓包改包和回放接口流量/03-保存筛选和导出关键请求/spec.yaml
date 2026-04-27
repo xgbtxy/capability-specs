@@ -1,0 +1,3 @@
+id: mitmproxy-save-filter-and-export
+name: 保存筛选和导出关键请求
+purpose: 从大量流量里筛出关键请求，并保存为后续分析素材。

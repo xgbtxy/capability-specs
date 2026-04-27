@@ -1,0 +1,3 @@
+id: duckdb-query-json-and-csv
+name: 用DuckDB直接查JSON和CSV结果
+purpose: 直接对抓包导出的 JSON、CSV 结果跑最小查询。

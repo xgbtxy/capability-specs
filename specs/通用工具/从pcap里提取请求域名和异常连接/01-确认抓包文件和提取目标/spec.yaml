@@ -1,0 +1,3 @@
+id: tshark-identify-capture-and-goal
+name: 确认抓包文件和提取目标
+purpose: 在分析前先确认抓包文件来源、时间段和提取目标。

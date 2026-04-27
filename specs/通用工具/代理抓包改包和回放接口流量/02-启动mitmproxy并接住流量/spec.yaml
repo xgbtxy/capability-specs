@@ -1,0 +1,3 @@
+id: mitmproxy-start-and-capture
+name: 启动mitmproxy并接住流量
+purpose: 让 mitmproxy 真正接住目标流量并能看到请求响应。

@@ -1,0 +1,33 @@
+id: make-capture-results-queryable
+name: 把抓包结果变成可查询数据
+purpose: 用 DuckDB 把抓包导出的 JSON、CSV、结果文件整理成可以查询、聚合和导出的数据表。
+inputs:
+  - name: capture_result_files
+    type: path_or_list
+    description: 抓包导出的 JSON、CSV、摘要文件或日志结果
+  - name: analysis_goal
+    type: string
+    description: 想看域名、路径、状态码、参数、时序还是异常统计
+outputs:
+  - name: queryable_tables
+    type: path_or_text
+    description: 整理后的临时表、查询结果或导出文件
+  - name: attack_surface_summary
+    type: markdown_or_text
+    description: 重要域名、接口、参数、状态码和异常分布
+  - name: export_notes
+    type: markdown_or_text
+    description: 哪些结果适合继续喂给 AI 或别的工具
+tools:
+  - name: duckdb
+  - name: powershell
+workflow:
+  - step: 确认抓包结果文件和分析目标
+  - step: 用DuckDB直接查JSON和CSV结果
+  - step: 把请求响应字段整理成表
+  - step: 按域名路径状态码和参数聚合
+  - step: 导出攻击面地图和统计结果
+constraints:
+  - 不允许没看结构就直接乱 join
+  - 不允许覆盖原始抓包结果文件
+  - 不允许只看几行样本就下全局结论

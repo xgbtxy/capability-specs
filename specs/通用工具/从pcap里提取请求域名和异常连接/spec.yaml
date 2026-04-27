@@ -1,0 +1,33 @@
+id: extract-requests-domains-and-anomalies-from-pcap
+name: 从pcap里提取请求域名和异常连接
+purpose: 用 tshark 在 Windows PowerShell 下从抓包文件里提取域名、请求、协议和异常连接信息。
+inputs:
+  - name: pcap_file
+    type: path
+    description: pcap 或 pcapng 文件
+  - name: extraction_goal
+    type: string
+    description: 想提域名、HTTP 请求、TLS 主机、错误连接还是统计结果
+outputs:
+  - name: extracted_summary
+    type: text_or_table
+    description: 提取出的协议、主机、请求和异常摘要
+  - name: exported_result
+    type: path_or_text
+    description: 导出的 CSV、文本或筛选结果
+  - name: anomaly_notes
+    type: text_or_markdown
+    description: 重传、RST、异常会话或奇怪流量说明
+tools:
+  - name: tshark
+  - name: powershell
+workflow:
+  - step: 确认抓包文件和提取目标
+  - step: 用tshark快速看协议和会话
+  - step: 提取域名主机和请求路径
+  - step: 筛出异常连接重传和错误
+  - step: 导出结果给后续分析
+constraints:
+  - 不允许没确认时间段和目标协议就全量乱看
+  - 不允许只看单个包就对整段流量下结论
+  - 不允许导出结果时丢掉关键字段和时间顺序

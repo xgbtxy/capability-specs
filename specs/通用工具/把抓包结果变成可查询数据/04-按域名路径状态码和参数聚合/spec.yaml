@@ -1,0 +1,3 @@
+id: duckdb-group-by-host-path-status-params
+name: 按域名路径状态码和参数聚合
+purpose: 从抓包结果里按主机、路径、状态码和参数模式做聚合。

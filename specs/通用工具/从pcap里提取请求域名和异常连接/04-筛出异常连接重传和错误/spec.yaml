@@ -1,0 +1,3 @@
+id: tshark-find-retransmissions-and-errors
+name: 筛出异常连接重传和错误
+purpose: 用 tshark 找出重传、RST、异常关闭和可疑会话。

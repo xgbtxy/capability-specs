@@ -1,0 +1,37 @@
+id: proxy-capture-modify-and-replay-traffic
+name: 代理抓包改包和回放接口流量
+purpose: 用 mitmproxy 或 mitmdump 在 Windows PowerShell 下抓包、筛流量、改包并回放接口请求。
+inputs:
+  - name: traffic_goal
+    type: string
+    description: 想抓哪类流量、哪个功能或哪个接口
+  - name: proxy_mode
+    type: string
+    description: 当前是浏览器代理、系统代理还是移动端代理
+  - name: replay_target
+    type: optional_string
+    description: 想重点重放、篡改或观察的接口
+outputs:
+  - name: captured_flows
+    type: path_or_text
+    description: 抓到的关键流量、导出文件或筛选结果
+  - name: replay_result
+    type: text_or_markdown
+    description: 改包或回放后的结果和差异
+  - name: safety_notes
+    type: text_or_markdown
+    description: 哪些修改有副作用、哪些流量不该乱重放
+tools:
+  - name: mitmproxy
+  - name: mitmdump
+  - name: powershell
+workflow:
+  - step: 确认代理模式和目标流量
+  - step: 启动mitmproxy并接住流量
+  - step: 保存筛选和导出关键请求
+  - step: 按规则改包和重放请求
+  - step: 验证回放结果和副作用
+constraints:
+  - 不允许没确认代理是否真正生效就开始分析
+  - 不允许对高风险接口无边界重放
+  - 不允许只看请求不看响应和状态变化
