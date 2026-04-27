@@ -1,0 +1,3 @@
+id: caddy-confirm-domain-service-ports
+name: 确认域名服务和端口
+purpose: 先确认域名、解析、后端服务和端口条件是否满足。

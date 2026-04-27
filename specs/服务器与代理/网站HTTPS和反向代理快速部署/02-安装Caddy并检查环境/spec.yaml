@@ -1,0 +1,3 @@
+id: caddy-install-and-check
+name: 安装Caddy并检查环境
+purpose: 安装 Caddy，并确认版本、服务状态和配置验证能力。

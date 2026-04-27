@@ -1,0 +1,3 @@
+id: caddy-write-caddyfile-enable-https
+name: 编写Caddyfile开启HTTPS
+purpose: 根据域名和服务目标生成可验证的 Caddyfile。

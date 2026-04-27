@@ -1,0 +1,3 @@
+id: caddy-validate-https-cert-renewal
+name: 验证证书访问和续期状态
+purpose: 验证 HTTPS 访问、证书状态、反向代理结果和服务状态。

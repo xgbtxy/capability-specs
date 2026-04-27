@@ -1,0 +1,3 @@
+id: caddy-configure-reverse-proxy-static-files
+name: 配置反向代理和静态文件
+purpose: 配置 reverse_proxy、file_server 或两者组合。

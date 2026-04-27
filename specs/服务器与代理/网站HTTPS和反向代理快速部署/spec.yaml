@@ -1,0 +1,37 @@
+id: caddy-https-reverse-proxy-deploy
+name: 网站HTTPS和反向代理快速部署
+purpose: 用 Caddy 把服务或静态站点快速挂到域名上，并自动处理 HTTPS 和反向代理。
+inputs:
+  - name: domain
+    type: string
+    description: 要绑定的域名
+  - name: upstream_service
+    type: string
+    description: 后端服务地址，例如 127.0.0.1:3000
+  - name: deploy_mode
+    type: string
+    description: 反向代理、静态文件，或两者组合
+outputs:
+  - name: caddyfile
+    type: path_or_text
+    description: 可验证的 Caddyfile 配置
+  - name: https_url
+    type: url
+    description: 可访问的 HTTPS 地址
+  - name: validation_summary
+    type: string
+    description: 访问、证书和服务状态检查结果
+tools:
+  - name: caddy
+  - name: curl
+  - name: systemctl
+workflow:
+  - step: 确认域名服务和端口
+  - step: 安装 Caddy 并检查环境
+  - step: 编写 Caddyfile 开启 HTTPS
+  - step: 配置反向代理和静态文件
+  - step: 验证证书访问和续期状态
+constraints:
+  - 不允许在域名未解析到服务器前承诺 HTTPS 已可用
+  - 不允许没确认 80 和 443 端口就直接排 Caddy 配置问题
+  - 不允许只看 Caddy 启动成功，不验证浏览器或 curl 访问
