@@ -1,0 +1,3 @@
+id: httpie-auth-headers-params
+name: 带认证头和参数调试接口
+purpose: 用 HTTPie 带 header、token、query 和 body 调试接口。

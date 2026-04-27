@@ -1,0 +1,36 @@
+id: api-debug-auth-upload-download
+name: API调试鉴权和文件上传下载
+purpose: 用 HTTPie 快速调试 API、带认证请求、上传下载文件并检查结果。
+inputs:
+  - name: endpoint
+    type: string
+    description: 接口地址
+  - name: request_goal
+    type: string
+    description: 想验证的接口行为
+  - name: auth_info
+    type: optional_string
+    description: token、basic auth 或其他认证信息
+outputs:
+  - name: request_example
+    type: string
+    description: 可直接执行的 HTTPie 命令
+  - name: response_summary
+    type: string
+    description: 状态码、返回体和关键字段摘要
+  - name: debug_notes
+    type: string
+    description: 失败点和排查方向
+tools:
+  - name: http
+  - name: powershell_or_bash
+workflow:
+  - step: 确认接口地址方法和认证方式
+  - step: 用 HTTPie 发起基础请求
+  - step: 带认证头和参数调试接口
+  - step: 上传下载文件和保存响应
+  - step: 验证返回结果和排查失败
+constraints:
+  - 不允许在没确认方法和认证前就乱打请求
+  - 不允许把敏感 token 直接写进仓库
+  - 不允许只看状态码不看返回体

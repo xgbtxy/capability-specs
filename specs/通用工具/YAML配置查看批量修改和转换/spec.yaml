@@ -1,0 +1,33 @@
+id: yaml-inspect-batch-edit-and-convert
+name: YAML配置查看批量修改和转换
+purpose: 用 yq 直接查看、查询、修改和转换 YAML 配置文件。
+inputs:
+  - name: yaml_input
+    type: path_or_list
+    description: 输入 YAML 文件、目录或通配路径
+  - name: target_goal
+    type: string
+    description: 想查看、筛选、批量修改还是转换什么
+outputs:
+  - name: yaml_summary
+    type: string
+    description: 文件结构和关键字段摘要
+  - name: yaml_result
+    type: path_or_text
+    description: 修改后或转换后的结果
+  - name: validation_notes
+    type: string
+    description: 修改是否成功以及如何验证
+tools:
+  - name: yq
+  - name: powershell_or_bash
+workflow:
+  - step: 识别 YAML 结构和修改目标
+  - step: 用 yq 查看查询和筛选
+  - step: 批量修改 YAML 字段
+  - step: 在 YAML 和 JSON 之间转换
+  - step: 验证修改结果是否正确
+constraints:
+  - 不允许没看清结构就直接批量修改
+  - 不允许默认覆盖重要原文件
+  - 不允许只看命令成功不验证结果字段

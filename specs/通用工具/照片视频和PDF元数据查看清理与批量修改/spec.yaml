@@ -1,0 +1,33 @@
+id: media-pdf-metadata-clean-and-batch-edit
+name: 照片视频和PDF元数据查看清理与批量修改
+purpose: 用 ExifTool 查看、清理和批量修改照片、视频、PDF 元数据。
+inputs:
+  - name: media_input
+    type: path_or_list
+    description: 照片、视频、PDF 文件或目录
+  - name: metadata_goal
+    type: string
+    description: 想查看、导出、清理还是批量修改什么元数据
+outputs:
+  - name: metadata_summary
+    type: string
+    description: 元数据结构和关键字段摘要
+  - name: modified_output
+    type: path_or_list
+    description: 修改后的文件或导出的元数据结果
+  - name: validation_notes
+    type: string
+    description: 元数据变更是否符合预期
+tools:
+  - name: exiftool
+  - name: powershell_or_bash
+workflow:
+  - step: 识别文件类型和元数据目标
+  - step: 查看导出和筛选元数据
+  - step: 清理敏感元数据
+  - step: 批量修改时间作者和标签
+  - step: 验证元数据变更结果
+constraints:
+  - 不允许在没看清文件类型前就批量清理
+  - 不允许对重要原始素材直接不可逆覆盖
+  - 不允许只看命令成功不复查元数据字段

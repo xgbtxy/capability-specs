@@ -1,0 +1,3 @@
+id: httpie-upload-download-save
+name: 上传下载文件和保存响应
+purpose: 用 HTTPie 处理文件上传下载并保存响应内容。

@@ -1,0 +1,3 @@
+id: yq-validate-results
+name: 验证修改结果是否正确
+purpose: 验证 yq 修改和转换结果是否符合预期。

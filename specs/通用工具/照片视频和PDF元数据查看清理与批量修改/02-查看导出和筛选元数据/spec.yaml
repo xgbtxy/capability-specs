@@ -1,0 +1,3 @@
+id: exiftool-view-export-filter
+name: 查看导出和筛选元数据
+purpose: 用 ExifTool 查看、导出和筛选关键元数据字段。

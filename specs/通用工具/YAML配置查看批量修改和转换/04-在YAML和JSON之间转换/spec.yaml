@@ -1,0 +1,3 @@
+id: yq-convert-yaml-json
+name: 在YAML和JSON之间转换
+purpose: 用 yq 在 YAML、JSON 之间转换并保留关键结构。

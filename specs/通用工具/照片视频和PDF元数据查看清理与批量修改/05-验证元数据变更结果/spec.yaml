@@ -1,0 +1,3 @@
+id: exiftool-validate-results
+name: 验证元数据变更结果
+purpose: 验证清理和批量修改后的元数据结果是否符合预期。

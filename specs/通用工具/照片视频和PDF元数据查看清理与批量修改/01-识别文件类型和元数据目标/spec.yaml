@@ -1,0 +1,3 @@
+id: exiftool-identify-targets
+name: 识别文件类型和元数据目标
+purpose: 先确认文件类型、关键元数据字段和修改目标。

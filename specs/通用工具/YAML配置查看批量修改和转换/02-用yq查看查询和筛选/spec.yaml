@@ -1,0 +1,3 @@
+id: yq-query-filter-read
+name: 用yq查看查询和筛选
+purpose: 用 yq 按路径读取、筛选和汇总 YAML 信息。

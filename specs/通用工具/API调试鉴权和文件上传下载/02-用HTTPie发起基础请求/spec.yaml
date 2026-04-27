@@ -1,0 +1,3 @@
+id: httpie-basic-requests
+name: 用HTTPie发起基础请求
+purpose: 用 HTTPie 发起 GET、POST 等基础请求并查看结果。

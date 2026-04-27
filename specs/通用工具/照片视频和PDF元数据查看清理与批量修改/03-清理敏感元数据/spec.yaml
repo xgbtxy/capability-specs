@@ -1,0 +1,3 @@
+id: exiftool-clean-sensitive-metadata
+name: 清理敏感元数据
+purpose: 用 ExifTool 清理定位、设备、作者等敏感元数据。

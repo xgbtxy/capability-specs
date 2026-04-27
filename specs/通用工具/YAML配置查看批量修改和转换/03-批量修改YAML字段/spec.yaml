@@ -1,0 +1,3 @@
+id: yq-batch-edit-fields
+name: 批量修改YAML字段
+purpose: 用 yq 对 YAML 关键字段做批量替换和更新。

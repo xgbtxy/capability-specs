@@ -1,0 +1,3 @@
+id: exiftool-batch-update-fields
+name: 批量修改时间作者和标签
+purpose: 用 ExifTool 批量统一时间、作者、版权和标签等字段。

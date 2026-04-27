@@ -1,0 +1,3 @@
+id: httpie-validate-and-debug
+name: 验证返回结果和排查失败
+purpose: 验证 HTTPie 请求结果并排查常见失败。
