@@ -1,0 +1,33 @@
+id: create-unified-project-command-entry
+name: 给项目整理统一命令入口
+purpose: 用 just 把项目里的常用命令收成统一入口，方便 AI 和人重复执行。
+inputs:
+  - name: project_root
+    type: path
+    description: 项目根目录
+  - name: command_list
+    type: list_or_text
+    description: 项目里经常要运行的命令
+  - name: usage_goal
+    type: string
+    description: 是本地开发、构建、测试、发布还是排障
+outputs:
+  - name: justfile_output
+    type: path
+    description: 生成或更新后的 justfile
+  - name: run_notes
+    type: string
+    description: 任务入口、参数和验证方式
+tools:
+  - name: just
+  - name: powershell
+workflow:
+  - step: 识别项目里的高频命令
+  - step: 编写最小justfile
+  - step: 给不同环境参数和任务分组
+  - step: 在PowerShell里调用和传参
+  - step: 验证团队是否都能直接运行
+constraints:
+  - 不允许把一堆无关命令硬塞进一个入口
+  - 不允许让 justfile 里埋危险默认写操作
+  - 不允许只写任务名不写最小用法

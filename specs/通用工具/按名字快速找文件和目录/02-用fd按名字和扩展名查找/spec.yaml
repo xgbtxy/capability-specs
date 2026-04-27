@@ -1,0 +1,3 @@
+id: fd-search-by-name-and-extension
+name: 用fd按名字和扩展名查找
+purpose: 用 fd 高效查找目标文件、目录和扩展名集合。

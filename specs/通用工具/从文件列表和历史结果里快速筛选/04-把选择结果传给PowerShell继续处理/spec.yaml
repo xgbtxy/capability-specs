@@ -1,0 +1,3 @@
+id: fzf-pass-selection-to-powershell
+name: 把选择结果传给PowerShell继续处理
+purpose: 把 fzf 的输出继续交给 PowerShell 做后续处理。

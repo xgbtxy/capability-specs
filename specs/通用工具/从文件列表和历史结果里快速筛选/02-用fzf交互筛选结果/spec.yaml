@@ -1,0 +1,3 @@
+id: fzf-interactively-select-results
+name: 用fzf交互筛选结果
+purpose: 用 fzf 从列表中交互选择目标结果。

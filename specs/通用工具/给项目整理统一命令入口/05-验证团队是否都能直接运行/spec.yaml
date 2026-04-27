@@ -1,0 +1,3 @@
+id: just-validate-team-usage
+name: 验证团队是否都能直接运行
+purpose: 验证 just 入口是否足够清楚、稳定、可复用。

@@ -1,0 +1,3 @@
+id: just-group-tasks-and-parameters
+name: 给不同环境参数和任务分组
+purpose: 让 justfile 更清楚地承载不同环境和任务参数。

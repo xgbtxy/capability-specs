@@ -1,0 +1,30 @@
+id: quickly-filter-file-lists-and-history
+name: 从文件列表和历史结果里快速筛选
+purpose: 用 fzf 在 Windows PowerShell 里从大量结果中快速筛选目标。
+inputs:
+  - name: input_source
+    type: text_or_command
+    description: 文件列表、命令输出或已有结果
+  - name: select_goal
+    type: string
+    description: 想选单个结果、多个结果还是要边看边挑
+outputs:
+  - name: selected_items
+    type: text_or_list
+    description: 选中的结果
+  - name: selection_notes
+    type: string
+    description: 预览、筛选条件和后续动作
+tools:
+  - name: fzf
+  - name: powershell
+workflow:
+  - step: 准备待筛选的文件列表或命令输出
+  - step: 用fzf交互筛选结果
+  - step: 预览文件内容再决定
+  - step: 把选择结果传给PowerShell继续处理
+  - step: 保存常用筛选流程
+constraints:
+  - 不允许把空输入直接交给 fzf
+  - 不允许多选结果后不说明后续怎么处理
+  - 不允许预览命令里夹带危险写操作

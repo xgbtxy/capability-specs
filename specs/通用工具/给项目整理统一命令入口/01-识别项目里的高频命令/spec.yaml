@@ -1,0 +1,3 @@
+id: just-identify-common-commands
+name: 识别项目里的高频命令
+purpose: 先梳理项目里最值得收进 justfile 的命令。

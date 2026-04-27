@@ -1,0 +1,33 @@
+id: find-files-and-directories-by-name
+name: 按名字快速找文件和目录
+purpose: 用 fd 在 Windows PowerShell 里快速找到目标文件和目录。
+inputs:
+  - name: search_root
+    type: path
+    description: 要从哪个目录开始找
+  - name: target_pattern
+    type: string
+    description: 文件名、目录名、扩展名或关键字
+  - name: search_goal
+    type: string
+    description: 想找文件、目录、某种扩展名还是某一批结果
+outputs:
+  - name: matched_paths
+    type: path_list
+    description: 命中的文件或目录列表
+  - name: search_notes
+    type: string
+    description: 搜索范围、过滤条件和是否找全
+tools:
+  - name: fd
+  - name: powershell
+workflow:
+  - step: 确认要找的文件类型和范围
+  - step: 用fd按名字和扩展名查找
+  - step: 排除目录并限制搜索范围
+  - step: 把搜索结果交给PowerShell继续处理
+  - step: 验证结果是否找全
+constraints:
+  - 不允许默认从整块磁盘无边界搜索
+  - 不允许没确认文件类型就把文件和目录混在一起找
+  - 不允许只返回路径不说明搜索条件

@@ -1,0 +1,3 @@
+id: fzf-preview-before-select
+name: 预览文件内容再决定
+purpose: 用 fzf 预览目标内容，再决定是否选择。

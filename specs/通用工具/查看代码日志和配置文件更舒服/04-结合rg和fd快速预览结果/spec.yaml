@@ -1,0 +1,3 @@
+id: bat-combine-with-rg-and-fd
+name: 结合rg和fd快速预览结果
+purpose: 让 bat 和 rg、fd 一起工作，快速定位并预览结果。

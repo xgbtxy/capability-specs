@@ -1,0 +1,3 @@
+id: bat-highlight-file-content
+name: 用bat高亮查看文件
+purpose: 用 bat 带语法高亮和行号查看文件内容。

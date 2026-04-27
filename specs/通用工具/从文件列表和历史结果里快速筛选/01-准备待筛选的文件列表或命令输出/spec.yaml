@@ -1,0 +1,3 @@
+id: fzf-prepare-input-list
+name: 准备待筛选的文件列表或命令输出
+purpose: 在调用 fzf 之前先整理好稳定、可读的输入。

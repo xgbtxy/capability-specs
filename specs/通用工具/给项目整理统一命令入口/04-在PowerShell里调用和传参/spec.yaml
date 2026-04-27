@@ -1,0 +1,3 @@
+id: just-run-and-pass-args-in-powershell
+name: 在PowerShell里调用和传参
+purpose: 让 just 任务在 PowerShell 环境里稳定执行和接收参数。

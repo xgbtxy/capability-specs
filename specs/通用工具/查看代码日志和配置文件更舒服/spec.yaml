@@ -1,0 +1,28 @@
+id: preview-code-logs-and-configs-better
+name: 查看代码日志和配置文件更舒服
+purpose: 用 bat 在 Windows PowerShell 里高亮、分页和预览文本文件。
+inputs:
+  - name: target_file_or_list
+    type: path_or_list
+    description: 要查看的文件、日志或搜索结果
+  - name: view_goal
+    type: string
+    description: 想看代码、日志、配置还是搜索命中结果
+outputs:
+  - name: preview_notes
+    type: string
+    description: 关键内容、行号和后续处理建议
+tools:
+  - name: bat
+  - name: powershell
+  - name: rg_or_fd_optional
+workflow:
+  - step: 确认要看的文件类型和重点
+  - step: 用bat高亮查看文件
+  - step: 分页查看大文件和日志
+  - step: 结合rg和fd快速预览结果
+  - step: 导出或复制关键信息
+constraints:
+  - 不允许默认把超大文件整段打印到屏幕
+  - 不允许预览时夹带写操作
+  - 不允许只说看过，不给关键行和判断
