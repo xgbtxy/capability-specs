@@ -19,13 +19,21 @@
 - `Get-Location`
 - `Test-Path 'C:\Users\15412\Desktop\工具包'`
 
-## 4. 和这个能力的关系
+## 4. 官方资料
+
+- `about_Parsing`: [https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_parsing?view=powershell-7.5](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_parsing?view=powershell-7.5)
+- `about_Quoting_Rules`: [https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_quoting_rules?view=powershell-7.6](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_quoting_rules?view=powershell-7.6)
+- `about_Pipelines`: [https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pipelines?view=powershell-7.5](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pipelines?view=powershell-7.5)
+- `about_Automatic_Variables`: [https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7.6](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7.6)
+
+## 5. 和这个能力的关系
 
 - 这不是 PowerShell 教材
 - 这是根据真实使用经验整理出来的稳妥写法
+- 关键点尽量和官方资料对齐
 - 重点是让 AI 少犯混用语法、错误引用路径、乱接管道这些问题
 
-## 5. 常见问题
+## 6. 常见问题
 
 - 问题：把 cmd 的 `%VAR%`、`dir /b`、`&&` 直接搬进 PowerShell
   排查：先确认这是 PowerShell，不是 cmd
