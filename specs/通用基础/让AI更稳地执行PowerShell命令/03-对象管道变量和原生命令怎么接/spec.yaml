@@ -1,0 +1,3 @@
+id: connect-objects-pipelines-and-native-commands
+name: 对象管道变量和原生命令怎么接
+purpose: 让 AI 在 PowerShell 对象、文本输出和原生命令之间更稳地衔接。

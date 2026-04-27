@@ -1,0 +1,36 @@
+id: make-ai-use-powershell-more-reliably
+name: 让AI更稳地执行PowerShell命令
+purpose: 根据真实 Windows PowerShell 使用经验，减少 AI 在路径、引号、管道、对象和原生命令上的常见错误。
+inputs:
+  - name: task_goal
+    type: string
+    description: 这次想在 Windows 上完成什么任务
+  - name: target_paths
+    type: optional_path_list
+    description: 可能涉及的中文路径、空格路径或项目路径
+  - name: current_error
+    type: optional_text
+    description: 当前已经出现的 PowerShell 报错、退出码或异常现象
+outputs:
+  - name: stable_command_plan
+    type: text_or_markdown
+    description: 更稳的 PowerShell 命令写法和执行顺序
+  - name: common_pitfall_notes
+    type: text_or_markdown
+    description: 这次最容易踩的 PowerShell 坑和规避方式
+  - name: retry_steps
+    type: text_or_markdown
+    description: 报错后怎么缩小命令并继续排查
+tools:
+  - name: powershell
+  - name: native_windows_commands_optional
+workflow:
+  - step: 先分清PowerShell和cmd不是一回事
+  - step: 路径空格中文和引号怎么写才稳
+  - step: 对象管道变量和原生命令怎么接
+  - step: 文件服务网络这些操作怎么写更稳
+  - step: 报错后怎么缩小命令并继续排查
+constraints:
+  - 不允许把 cmd 语法直接当 PowerShell 语法用
+  - 不允许忽略中文路径、空格路径和引号问题
+  - 不允许一条复杂命令失败后继续盲叠更多命令

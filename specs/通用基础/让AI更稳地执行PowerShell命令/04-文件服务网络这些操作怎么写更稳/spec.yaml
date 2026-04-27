@@ -1,0 +1,3 @@
+id: safer-powershell-for-files-services-and-network
+name: 文件服务网络这些操作怎么写更稳
+purpose: 让 AI 在常见 Windows 维护动作里优先使用更稳妥的 PowerShell 写法。

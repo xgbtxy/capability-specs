@@ -1,0 +1,3 @@
+id: shrink-command-after-error-and-debug
+name: 报错后怎么缩小命令并继续排查
+purpose: 让 AI 在 PowerShell 报错后优先拆小命令、确认输入、继续定位，而不是盲改。

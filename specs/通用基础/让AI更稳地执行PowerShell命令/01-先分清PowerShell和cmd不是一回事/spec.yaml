@@ -1,0 +1,3 @@
+id: distinguish-powershell-from-cmd
+name: 先分清PowerShell和cmd不是一回事
+purpose: 在写命令前先确认当前语境是 PowerShell，而不是 cmd。
