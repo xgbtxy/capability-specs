@@ -1,0 +1,3 @@
+id: semgrep-triage-findings
+name: 复核问题并缩小误报
+purpose: 复核 Semgrep 命中结果并缩小误报范围。

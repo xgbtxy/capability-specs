@@ -1,0 +1,3 @@
+id: ast-grep-identify-language-pattern
+name: 识别语言和要找的语法结构
+purpose: 先确认代码语言、语法结构和改写目标。

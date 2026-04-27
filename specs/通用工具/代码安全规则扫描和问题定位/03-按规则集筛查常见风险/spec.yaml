@@ -1,0 +1,3 @@
+id: semgrep-select-rulesets
+name: 按规则集筛查常见风险
+purpose: 选择和组合 Semgrep 规则集来筛查常见风险。

@@ -1,0 +1,33 @@
+id: semgrep-security-scan-and-triage
+name: 代码安全规则扫描和问题定位
+purpose: 用 Semgrep 扫描代码常见风险，并把问题定位和误报收敛拆成可复用步骤。
+inputs:
+  - name: codebase_path
+    type: path
+    description: 要扫描的项目目录
+  - name: target_scope
+    type: string
+    description: 扫描目标，例如某语言、某目录或某类风险
+outputs:
+  - name: findings
+    type: list_or_text
+    description: 命中问题和位置摘要
+  - name: triage_notes
+    type: string
+    description: 真实问题、误报和排查说明
+  - name: rule_notes
+    type: string
+    description: 规则选择和沉淀建议
+tools:
+  - name: semgrep
+  - name: powershell_or_bash
+workflow:
+  - step: 确认扫描范围和语言
+  - step: 用 Semgrep 跑基础扫描
+  - step: 按规则集筛查常见风险
+  - step: 复核问题并缩小误报
+  - step: 导出结果并沉淀规则
+constraints:
+  - 不允许把扫描命中直接当成最终结论
+  - 不允许在没确认语言和目录前就全仓乱扫
+  - 不允许只给问题列表，不说明复核结果

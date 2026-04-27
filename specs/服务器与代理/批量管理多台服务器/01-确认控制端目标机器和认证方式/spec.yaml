@@ -1,0 +1,3 @@
+id: ansible-confirm-control-node-targets-auth
+name: 确认控制端目标机器和认证方式
+purpose: 先确认控制端、目标机器分组和认证方式。

@@ -1,0 +1,3 @@
+id: ansible-batch-run-and-change
+name: 批量执行命令和配置变更
+purpose: 用 Ansible 对多台机器批量执行命令和配置变更。

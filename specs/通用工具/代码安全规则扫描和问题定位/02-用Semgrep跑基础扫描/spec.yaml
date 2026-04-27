@@ -1,0 +1,3 @@
+id: semgrep-basic-scan
+name: 用Semgrep跑基础扫描
+purpose: 用 Semgrep 先做基础扫描并收集命中结果。

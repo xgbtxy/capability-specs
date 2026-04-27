@@ -1,0 +1,33 @@
+id: ast-grep-structural-search-and-rewrite
+name: 按语法搜索和批量改代码
+purpose: 用 ast-grep 按代码语法结构搜索、定位和批量改写代码。
+inputs:
+  - name: codebase_path
+    type: path
+    description: 项目代码目录
+  - name: target_pattern
+    type: string
+    description: 想搜索或改写的语法结构
+outputs:
+  - name: matched_results
+    type: list_or_text
+    description: 匹配到的代码位置和结构摘要
+  - name: rewrite_result
+    type: path_or_text
+    description: 改写后的代码结果
+  - name: validation_notes
+    type: string
+    description: 改写是否正确以及如何验证
+tools:
+  - name: ast-grep
+  - name: powershell_or_bash
+workflow:
+  - step: 识别语言和要找的语法结构
+  - step: 用 ast-grep 按语法搜索
+  - step: 批量改写代码结构
+  - step: 限制范围并验证改写结果
+  - step: 把搜索和改写结果沉淀成规则
+constraints:
+  - 不允许把纯文本搜索误当成语法搜索
+  - 不允许没缩小范围就直接大批量改写
+  - 不允许只看命令成功不检查代码编译或测试结果

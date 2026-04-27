@@ -1,0 +1,3 @@
+id: semgrep-export-and-save-rules
+name: 导出结果并沉淀规则
+purpose: 导出 Semgrep 结果并沉淀可复用规则或排查经验。

@@ -1,0 +1,3 @@
+id: ast-grep-structural-search
+name: 用ast-grep按语法搜索
+purpose: 用 ast-grep 按语法节点和模式搜索代码。

@@ -1,0 +1,3 @@
+id: ansible-validate-and-review-failures
+name: 验证执行结果并回看失败机器
+purpose: 验证批量执行结果，并单独复核失败机器。
