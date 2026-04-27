@@ -1,0 +1,33 @@
+id: local-data-files-analysis-and-conversion
+name: 本地数据文件查看分析和转换
+purpose: 用 DuckDB 直接查询、分析、清洗和转换本地 CSV、JSON、Parquet 等数据文件。
+inputs:
+  - name: data_files
+    type: path_or_list
+    description: 本地数据文件或目录
+  - name: analysis_goal
+    type: string
+    description: 想查看、统计、筛选、汇总或转换什么
+outputs:
+  - name: data_summary
+    type: string
+    description: 数据文件结构和规模摘要
+  - name: query_result
+    type: table_or_file
+    description: 查询、统计或转换结果
+  - name: validation_notes
+    type: string
+    description: 结果是否可信以及如何验证
+tools:
+  - name: duckdb
+  - name: powershell_or_bash
+workflow:
+  - step: 识别数据文件和分析目标
+  - step: 用 DuckDB 直接查询本地文件
+  - step: 清洗筛选汇总数据
+  - step: 导出转换后的结果文件
+  - step: 验证结果是否可信
+constraints:
+  - 不允许在没确认字段和行数前直接下结论
+  - 不允许覆盖原始数据文件
+  - 不允许只看部分样本就假装已经分析完整数据

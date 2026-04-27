@@ -1,0 +1,3 @@
+id: duckdb-clean-filter-aggregate-data
+name: 清洗筛选汇总数据
+purpose: 用 DuckDB 对本地数据做筛选、去重、分组、排序和汇总。

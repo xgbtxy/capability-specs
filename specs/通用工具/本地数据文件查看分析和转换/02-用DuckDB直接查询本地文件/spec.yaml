@@ -1,0 +1,3 @@
+id: duckdb-query-local-files-directly
+name: 用DuckDB直接查询本地文件
+purpose: 用 DuckDB 直接读取本地 CSV、JSON、Parquet 等文件并执行 SQL。

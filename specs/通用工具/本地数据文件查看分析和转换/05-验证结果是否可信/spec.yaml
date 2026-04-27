@@ -1,0 +1,3 @@
+id: duckdb-validate-data-results
+name: 验证结果是否可信
+purpose: 用可复现检查确认查询、清洗和导出的结果可信。

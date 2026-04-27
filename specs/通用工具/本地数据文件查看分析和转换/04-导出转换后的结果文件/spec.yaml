@@ -1,0 +1,3 @@
+id: duckdb-export-converted-results
+name: 导出转换后的结果文件
+purpose: 用 DuckDB 把处理后的结果导出为可交付文件。

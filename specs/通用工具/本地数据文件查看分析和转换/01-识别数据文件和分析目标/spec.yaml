@@ -1,0 +1,3 @@
+id: duckdb-identify-data-files-and-goal
+name: 识别数据文件和分析目标
+purpose: 先确认数据文件类型、字段结构、数据规模和分析目标。
