@@ -1,0 +1,3 @@
+id: add-edge-cases-for-packet-goals
+name: 按抓包目标补边界值和变体用例
+purpose: 围绕想要的接口和数据包，补更多更可能触发差异的输入。

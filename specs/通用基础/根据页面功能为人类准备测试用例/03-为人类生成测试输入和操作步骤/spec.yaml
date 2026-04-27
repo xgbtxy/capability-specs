@@ -1,0 +1,3 @@
+id: generate-human-runnable-test-cases
+name: 为人类生成测试输入和操作步骤
+purpose: 把页面分析结果整理成可直接执行的测试用例。

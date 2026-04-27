@@ -1,0 +1,3 @@
+id: iterate-test-cases-from-new-packets
+name: 根据新回包继续迭代测试用例
+purpose: 利用新抓到的请求和响应，继续收敛测试输入和下一轮重点。

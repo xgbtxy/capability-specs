@@ -1,0 +1,38 @@
+id: prepare-test-cases-from-page-features
+name: 根据页面功能为人类准备测试用例
+purpose: 根据页面功能、功能描述、截图、抓包和 JS 文件，先让 AI 设计测试用例，再由人去触发和回喂结果。
+inputs:
+  - name: page_materials
+    type: image_or_text_or_file_list
+    description: 页面截图、功能描述、URL、抓包文件、关键 JS 文件
+  - name: test_goal
+    type: string
+    description: 想触发什么功能、什么数据包、什么状态变化
+  - name: current_findings
+    type: optional_text
+    description: 当前已经看到的接口、参数、异常点或怀疑点
+outputs:
+  - name: test_case_list
+    type: markdown_or_text
+    description: 可直接给人执行的测试输入、操作路径和观察点
+  - name: packet_focus_points
+    type: markdown_or_text
+    description: 哪些动作最值得抓包、哪些字段和状态最值得观察
+  - name: followup_notes
+    type: markdown_or_text
+    description: 回包后下一轮该怎么补测
+tools:
+  - name: large_language_model
+  - name: screenshots
+  - name: packet_capture_files_optional
+  - name: javascript_files_optional
+workflow:
+  - step: 先收集页面功能说明和现场材料
+  - step: 根据页面功能猜测交互路径和关键状态
+  - step: 为人类生成测试输入和操作步骤
+  - step: 按抓包目标补边界值和变体用例
+  - step: 根据新回包继续迭代测试用例
+constraints:
+  - 不允许只给抽象建议，不给可执行输入和操作步骤
+  - 不允许让 AI 从零无材料地盲逛站点
+  - 不允许把人类已经收集到的现场材料浪费掉
