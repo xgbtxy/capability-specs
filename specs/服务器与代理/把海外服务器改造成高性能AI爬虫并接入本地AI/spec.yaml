@@ -1,0 +1,58 @@
+id: turn-overseas-server-into-ai-crawler
+name: 把海外服务器改造成高性能AI爬虫并接入本地AI
+purpose: 把已有海外服务器收敛成单用途 Crawl4AI 节点，经过实测调优后，以持久 SSH 通道、crawlerctl 和 Skill 向本地 AI 提供完整爬取能力。
+inputs:
+  - name: server_host
+    type: string
+    description: 海外服务器地址，不写入公开仓库
+  - name: ssh_access
+    type: object
+    description: SSH 用户、端口和密钥等连接信息
+  - name: server_resources
+    type: object
+    description: CPU、内存、磁盘和当前负载
+  - name: current_services
+    type: string
+    description: 当前代理、容器和其他服务清单
+  - name: crawler_profile
+    type: string
+    description: 标准部署或单所有者可信完整部署
+  - name: ai_client
+    type: string
+    description: Codex 或其他需要接入该能力的 AI 客户端
+outputs:
+  - name: dedicated_crawler_runtime
+    type: string
+    description: 可重建、可回滚的 Crawl4AI 运行环境
+  - name: local_cli_entry
+    type: string
+    description: crawlerctl 本地统一命令入口
+  - name: ai_skill_entry
+    type: string
+    description: 能隐式识别爬取意图的 AI Skill
+  - name: benchmark_summary
+    type: string
+    description: 并发、延迟、吞吐、内存、OOM 和重启结果
+  - name: validation_summary
+    type: string
+    description: 基础和高级能力的活体验收结果
+tools:
+  - name: Crawl4AI
+  - name: Docker Compose
+  - name: OpenSSH
+  - name: Python
+  - name: crawlerctl
+  - name: AI Skill
+workflow:
+  - step: 确认服务器现状并清理旧代理服务
+  - step: 用 Docker 部署 Crawl4AI 并建立完整 API
+  - step: 按真实负载调优浏览器并发
+  - step: 建立持久 SSH 通道和 crawlerctl 入口
+  - step: 把爬虫能力接入 AI 并做新会话验收
+constraints:
+  - 不允许把服务器地址、密码、Token、Cookie、私钥或目标站凭据写入仓库
+  - 不允许把适配 Crawl4AI 0.9.1 的补丁盲目套到其他版本
+  - 不允许用配置里的并发数字代替基准测试结果
+  - 不允许只测健康接口就宣布爬虫部署完成
+  - 不允许让友好 CLI 的字段白名单阻断 Crawl4AI 原生能力
+  - 变更前必须保留服务、配置和镜像回滚点

@@ -1,0 +1,42 @@
+id: create-persistent-ssh-tunnel-and-crawlerctl
+name: 建立持久SSH通道和crawlerctl入口
+purpose: 通过持久 SSH 本地转发降低海外调用延迟，并提供同时覆盖常见任务和原生 API 的 crawlerctl。
+inputs:
+  - name: ssh_access
+    type: object
+    description: 主机、用户、端口和密钥
+  - name: remote_crawler_port
+    type: integer
+    description: 服务器 Crawl4AI 回环监听端口
+  - name: local_tunnel_port
+    type: integer
+    description: 本机回环转发端口
+  - name: api_token
+    type: string
+    description: Crawl4AI bearer token
+outputs:
+  - name: persistent_tunnel
+    type: string
+    description: 可自动启动、保活、检测和重连的 SSH 通道
+  - name: crawlerctl
+    type: string
+    description: configure、status、crawl、batch、site、run、api 统一入口
+  - name: latency_comparison
+    type: string
+    description: 临时桥接与持久通道的同负载延迟对比
+tools:
+  - name: OpenSSH
+  - name: PowerShell
+  - name: Python
+  - name: Crawl4AI API
+workflow:
+  - step: 验证服务器 API 只监听回环地址
+  - step: 建立带保活和失败检测的本地转发
+  - step: 实现 crawlerctl 配置与常用命令
+  - step: 保留 run 与 api 无字段白名单透传
+  - step: 做延迟、故障恢复和大结果验收
+constraints:
+  - 不允许每个 crawlerctl 命令重新建立一次 SSH
+  - 不允许把 Token 打印到日志或提交仓库
+  - 不允许让 crawlerctl 的参数模型成为 Crawl4AI 能力上限
+  - 不允许只测通道端口，不测真实 crawl

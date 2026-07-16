@@ -1,0 +1,38 @@
+id: connect-overseas-crawler-to-ai-and-validate
+name: 把爬虫能力接入AI并做新会话验收
+purpose: 用项目入口、AI Skill 和 crawlerctl 命令契约向新 AI 会话完整提供海外爬虫能力，并验证隐式调用。
+inputs:
+  - name: capability_package_path
+    type: string
+    description: 本能力包在 capability-specs 仓库中的路径
+  - name: crawlerctl_path
+    type: string
+    description: 本机可执行的 crawlerctl
+  - name: ai_client
+    type: string
+    description: Codex 或其他支持项目规则和 Skill 的 AI
+outputs:
+  - name: ai_entry_prompt
+    type: string
+    description: 可交给另一个 AI 的完整入口提示
+  - name: crawler_skill
+    type: string
+    description: 隐式触发并路由 crawlerctl 的 Skill
+  - name: fresh_session_validation
+    type: string
+    description: 新会话基础、高级和隐式触发验收
+tools:
+  - name: crawlerctl
+  - name: AI Skill
+  - name: AGENTS.md
+workflow:
+  - step: 指定能力包为部署和调用事实源
+  - step: 创建只负责路由与调用的海外爬虫 Skill
+  - step: 写清用户意图到 crawlerctl 的映射
+  - step: 给另一个 AI 使用完整入口 Prompt
+  - step: 在全新会话中做隐式触发和高级调用验收
+constraints:
+  - 不允许把服务器秘密复制进 Skill 或 Prompt
+  - 不允许让 AI 用普通网页请求假装完成动态或整站爬取
+  - 不允许只在已经知道 Skill 名的当前会话中验收
+  - 不允许把 crawlerctl 的友好命令误认为全部能力

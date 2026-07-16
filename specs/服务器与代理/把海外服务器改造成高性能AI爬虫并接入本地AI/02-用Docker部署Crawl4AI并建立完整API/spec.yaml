@@ -1,0 +1,47 @@
+id: deploy-crawl4ai-full-api-with-docker
+name: 用Docker部署Crawl4AI并建立完整API
+purpose: 固定 Crawl4AI 版本，用 Docker Compose 建立可重建运行环境，并在单所有者可信边界内开放完整请求能力。
+inputs:
+  - name: crawler_version
+    type: string
+    description: 明确固定的 Crawl4AI 版本
+  - name: server_resources
+    type: object
+    description: 可分配给容器的内存、shm、CPU 和磁盘
+  - name: required_capabilities
+    type: string
+    description: JavaScript、深爬、截图、PDF、代理、Cookie、hooks 等需求
+  - name: api_token
+    type: string
+    description: 仅保存于服务器私有 env 和本地私有配置
+outputs:
+  - name: compose_project
+    type: string
+    description: 可重建的 compose、env 模板和镜像版本
+  - name: full_api_profile
+    type: string
+    description: 标准能力与可信完整能力的差异记录
+  - name: rollback_point
+    type: string
+    description: 上一个可用镜像、配置和恢复步骤
+  - name: api_validation
+    type: string
+    description: OpenAPI、Schema、健康和高级能力测试结果
+tools:
+  - name: docker
+  - name: docker compose
+  - name: Crawl4AI
+  - name: curl
+  - name: Python
+workflow:
+  - step: 固定版本并读取官方文档与运行时接口
+  - step: 先验证官方镜像现有能力
+  - step: 只对缺失能力构建可审计派生镜像
+  - step: 用 Compose 设置回环端口、Token 和资源边界
+  - step: 活体验证基础与高级 API
+constraints:
+  - 不允许使用 latest 作为唯一可复现版本
+  - 不允许把 0.9.1 的源码位置和补丁直接假设为新版本事实
+  - 不允许在运行中容器手改后把它当作完成
+  - 不允许为了完整能力移除 API Token 或把端口绑定到所有公网地址
+  - 不允许把目标站失败和服务器内部故障混为同一类 HTTP 错误
