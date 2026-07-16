@@ -1,0 +1,40 @@
+id: benchmark-and-tune-crawler-concurrency
+name: 按真实负载调优浏览器并发
+purpose: 用固定负载测量吞吐、延迟和资源，选择 Crawl4AI 浏览器与作业并发的稳定性能拐点。
+inputs:
+  - name: server_resources
+    type: object
+    description: CPU、内存、shm、磁盘和网络条件
+  - name: workload_set
+    type: string
+    description: 固定的 raw、静态、动态、深爬和批量测试集
+  - name: candidate_concurrency
+    type: string
+    description: 待比较的并发值，例如 1、2、4、6、8、12、16
+outputs:
+  - name: benchmark_table
+    type: string
+    description: 每组吞吐、平均与尾延迟、CPU、内存、错误和重启
+  - name: selected_concurrency
+    type: integer
+    description: 实测得到的稳定性能拐点
+  - name: operating_limits
+    type: string
+    description: 适用负载、浏览器回收、超时和降载条件
+tools:
+  - name: docker stats
+  - name: docker inspect
+  - name: Crawl4AI monitor
+  - name: PowerShell
+  - name: crawlerctl
+workflow:
+  - step: 固定镜像、配置、测试集和缓存状态
+  - step: 采集单并发基线
+  - step: 逐档提高并发并记录相同指标
+  - step: 比较吞吐收益与资源和尾延迟代价
+  - step: 长时间复测所选值并保存结果
+constraints:
+  - 不允许用不同 URL 集比较两个并发值
+  - 不允许把冷启动和热缓存结果混在一起
+  - 不允许忽略失败率、OOM、重启和尾延迟
+  - 不允许因为配置接受更大数字就认定性能更高

@@ -1,0 +1,43 @@
+id: audit-server-and-remove-old-proxy
+name: 确认服务器现状并清理旧代理服务
+purpose: 建立服务器资源与服务基线，备份并停用旧代理及无关服务，为单用途爬虫释放资源。
+inputs:
+  - name: ssh_access
+    type: object
+    description: 已验证可用的 SSH 连接
+  - name: target_role
+    type: string
+    description: 服务器最终唯一角色，预期为海外爬虫
+  - name: known_proxy_services
+    type: string
+    description: 已知代理服务名、容器名、端口和配置路径
+outputs:
+  - name: baseline
+    type: string
+    description: CPU、内存、磁盘、服务、容器和监听端口基线
+  - name: backup_locations
+    type: string
+    description: 旧配置和服务定义的备份位置
+  - name: disabled_services
+    type: string
+    description: 已停用但仍可回滚的服务清单
+  - name: remaining_listeners
+    type: string
+    description: 清理后的监听端口清单
+tools:
+  - name: ssh
+  - name: systemctl
+  - name: ss
+  - name: journalctl
+  - name: docker
+workflow:
+  - step: 验证 SSH 并开启第二个保底会话
+  - step: 采集系统资源、服务、容器和端口基线
+  - step: 定位旧代理的服务定义、配置和数据
+  - step: 备份后停用旧代理与无关常驻服务
+  - step: 重新登录并验证残留监听
+constraints:
+  - 不允许根据进程名字猜测服务用途后直接删除
+  - 不允许在没有第二个可用 SSH 会话时修改 SSH 或防火墙
+  - 不允许先删配置再验证服务已经安全停用
+  - 不允许把凭据和配置原文提交到仓库
